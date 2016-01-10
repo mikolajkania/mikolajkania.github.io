@@ -6,22 +6,22 @@ highlighter:      rouge
 permalink:        pretty
 
 # Setup
-title:            Hyde
-tagline:          'A Jekyll theme'
-description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
-url:              http://hyde.getpoole.com
+title:            itblues.pl
+tagline:          'Programming blog by Mikołaj Kania'
+description:      'Programming blog by <a href="https://pl.linkedin.com/in/mikolajkania" target="_blank">Mikołaj Kania</a>.'
+url:              itblues.xxx
 baseurl:          /
 
 author:
-  name:           'Mark Otto'
-  url:            https://twitter.com/mdo
+  name:           'Mikołaj Kania'
+  url:            https://pl.linkedin.com/in/mikolajkania
 
 paginate:         5
 
 # Custom vars
-version:          2.1.0
+#version:          2.1.0
 
 github:
-  repo:           https://github.com/poole/hyde
+  repo:           https://github.com/mikolajkania
 
 gems: [jekyll-paginate]
