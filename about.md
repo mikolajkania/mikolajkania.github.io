@@ -4,7 +4,7 @@ title: About
 ---
 
 <p class="message">
-  There will be more information soon!
+  A mind is like a parachute. It doesn't work if it is not open. ~ Frank Zappa
 </p>
 
-For now - hello world.
+In order to keep it sharp I decided to start this blog ;)
