@@ -10,3 +10,7 @@ The core change is to add a few JVM parametes on Solr startup:
 {% highlight text %} -Dcom.sun.management.jmxremote \ -Dcom.sun.management.jmxremote.local.only=false \ -Dcom.sun.management.jmxremote.ssl=false \ -Dcom.sun.management.jmxremote.authenticate=false \ -Dcom.sun.management.jmxremote.port=18983 \ -Dcom.sun.management.jmxremote.rmi.port=18983{% endhighlight %}
 
 Solr documentation provides simpler way to do that, but I prefer to declare things explicitly.
+
+Below you can see an example of VisualVM heap memory output for Solr 5 indexing 1k documents.
+
+![placeholder](https://raw.githubusercontent.com/mikolajkania/mikolajkania.github.io/master/_images/2016-03-13-memory.png "Memory usage during indexing documents")
