@@ -5,7 +5,7 @@ title: Solr 5 starting scripts
 
 As we all know from [Solr](http://lucene.apache.org/solr/) website:
 
-  > Solr is the popular, blazing-fast, open source enterprise search platform built on Apache Lucene.
+> Solr is the popular, blazing-fast, open source enterprise search platform built on Apache Lucene.
 
 It's all true but on the other hand Solr is not known from its ease-of-use. In the fifth version community decided to address one of the main issues making Solr more demanding for newcomers than competition, that is simplicity of startup. 
 
