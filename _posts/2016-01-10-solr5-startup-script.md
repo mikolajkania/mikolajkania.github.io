@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Solr 5 starting scripts
+tags:
+- solr
+- windows
+- script
 ---
 
 As we all know from [Solr](http://lucene.apache.org/solr/) website:

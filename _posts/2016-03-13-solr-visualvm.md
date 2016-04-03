@@ -1,6 +1,11 @@
 ---
 layout: post
 title: Solr with VisualVM via JMX
+tags:
+- visualvm
+- jmx
+- solr
+- script
 ---
 
 Recently I had a need to measure Solr memory usage and I decided to use free Oracle tool - VisualVM. As usual an [official documentation](https://cwiki.apache.org/confluence/display/solr/Taking+Solr+to+Production#TakingSolrtoProduction-EnableRemoteJMXAccess) provides some help, but to make things simpler I extended my [Solr startup script for Windows](http://itblues.pl/2016/01/10/solr5-startup-script/) to put all important information in one place.
