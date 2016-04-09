@@ -1,5 +1,5 @@
 <div class="post-tags">
-  Tags: 
+  <span style="float:right;">&nbsp;
   {% if post %}
     {% assign tags = post.tags %}
   {% else %}
@@ -8,4 +8,6 @@
   {% for tag in tags %}
 	<a href="/tags/#{{tag|slugize}}">{{tag}}</a>{% unless forloop.last %},{% endunless %}
   {% endfor %}
+  </span>
+  <span style="float:right;padding-top:10px;"><img src="public/glyphicons-67-tags.png" alt="tags" height="14px"/></span>
 </div>
