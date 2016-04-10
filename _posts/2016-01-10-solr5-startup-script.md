@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Solr 5 starting scripts
+title: Solr 5 startup scripts
 tags:
 - solr
 - windows
