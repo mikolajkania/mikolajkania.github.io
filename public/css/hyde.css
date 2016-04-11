@@ -270,3 +270,7 @@ a.sidebar-nav-item:focus {
 .post-tags {
   text-align: right;
 }
+
+.post-footer {
+	text-align:center;
+}
