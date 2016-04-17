@@ -269,8 +269,27 @@ a.sidebar-nav-item:focus {
 }
 .post-tags {
   text-align: right;
+  font-size:16px;
+}
+
+a.post-tags-link:link {color:#9a9a9a}
+a.post-tags-link:active {color:#9a9a9a}
+a.post-tags-link:hover {color:#9a9a9a}
+a.post-tags-link:visited {color:#9a9a9a}
+
+a.post-footer-link:link {color:#9a9a9a}
+a.post-footer-link:active {color:#9a9a9a}
+a.post-footer-link:hover {color:#9a9a9a}
+a.post-footer-link:visited {color:#9a9a9a}
+
+.post-author {
+  color:white;
+  background-color:#9a9a9a;
+  padding-left:5px;
+  padding-right:5px;
 }
 
 .post-footer {
-	text-align:center;
+  text-align:center;
+  font-size:16px;
 }
