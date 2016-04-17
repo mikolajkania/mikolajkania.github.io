@@ -4,7 +4,7 @@ layout: default
 
 <div class="post">
  
-  <a href="http://{{ site.url }}"><h1 class="post-title">{{ page.title }}</h1></a>
+  <h1 class="post-title"><a href="http://{{ site.url }}">Home</a> / {{ page.title }}</h1>
 
   <span class="post-date">{{ page.date | date_to_string }} by {{ site.author.name }}</span>
   {{ content }}
