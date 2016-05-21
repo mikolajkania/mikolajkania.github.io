@@ -28,7 +28,7 @@ $http.get('/getImage?' +
 
 After saving the changes and clicking the button again, *connections.log* will contain multiple rows with logged connections and out job will be done.
 
-![placeholder](https://raw.githubusercontent.com/mikolajkania/mikolajkania.github.io/master/_images/2016-05-21-hacked-app-verified.jpg "Logged http requests")
+![placeholder](https://raw.githubusercontent.com/mikolajkania/mikolajkania.github.io/master/_images/2016-05-21-hacked-app-verified.png "Logged http requests")
 
 In order to make my example straight I made a few simplifications:
 
