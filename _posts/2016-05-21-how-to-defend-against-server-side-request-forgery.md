@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to perform a server side request forgery?
+title: How to defend against a server side request forgery?
 tags:
 - server side request forgery
 - security
