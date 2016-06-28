@@ -184,6 +184,7 @@ a.sidebar-nav-item:focus {
 .theme-base-custom .content a,
 .theme-base-custom .related-posts li a:hover {
   color: #00394d;
+  font-weight:bold;
 }
 
 /* Red */
