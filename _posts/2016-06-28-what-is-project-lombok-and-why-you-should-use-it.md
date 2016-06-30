@@ -71,7 +71,7 @@ public class ArticleSearcher {
 
 
 <h2>Equals & hashcode generation</h2>
-Equals & hashcode are usually another IDE-generated elements of a class. The more time goes by since a class creation is created, the less intuitive it is to recognise if some fields should be a part of those methods, or rather are intentionally omitted. With Lombok these problem is marginalised.
+Equals & hashcode are usually another IDE-generated elements of a class. The more time goes by since a class creation, the less intuitive it is to recognise if some fields should be a part of those methods, or rather are intentionally omitted. With Lombok these problem is marginalised.
 
 {% highlight java %}
 @EqualsAndHashCode(exclude={"id"})
