@@ -82,7 +82,7 @@ public class Article {
 
 
 <h2>Plugins</h2>
-It is important to note that those features would be useless without a good code complation of modern IDE-s. Fortunately Intellij Idea - which I use and recommend - has the plugin that make finding Lombok-generated methods almost as easy as using standard ones. [Eclipse and Netbeans also are supported](https://projectlombok.org/download.html). Finding usages on a field can point you to a used getter, and when you use an object Idea prompts methods. Example is shown below:
+It is important to note that those features would be useless without a good code complation of modern IDE-s. Fortunately Intellij Idea - which I use and recommend - has the plugin that make finding Lombok-generated methods almost as easy as using standard ones. [Eclipse and Netbeans are also supported](https://projectlombok.org/download.html). Finding usages on a field can point you to a used getter, and when you use an object Idea prompts methods. Example is shown below:
 
 ![placeholder](https://raw.githubusercontent.com/mikolajkania/mikolajkania.github.io/master/_images/2016-06-28-lombok-code-completion.png "Logged http requests")
 
