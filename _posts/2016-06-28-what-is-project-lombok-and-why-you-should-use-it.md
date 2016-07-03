@@ -15,7 +15,7 @@ Java is well known for its necessity to write quite a lot of code to perform sim
 
 
 <h2>Project Lombok</h2>
-[The Project Lombok's](https://projectlombok.org/) main goal is to reduce boilerplate code in Java. It provides bunch of annotations making classes much more cleaner and is able to generate required code during compilation. But before we immerse ourselves into the project's goodies, let's take a look into how annotations are proceeded in Java.
+[The Project Lombok's](https://projectlombok.org/) main goal is to reduce boilerplate code in Java. It provides bunch of annotations making classes much more cleaner and is able to generate required code during compilation. But before we immerse ourselves into the project's goodies, let's take a look into how annotations are processed in Java.
 
 Lombok uses Pluggable Annotation Processing API which was introduced in Java 6 (2006 - ten years ago!). It allows programmers to write custom annotation processors that are plugged into compiling process. Processor receives a source code's AST ([abstract sytntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree)) which is a tree of nodes representing variables, operators, statements and others language components; imagine it as a Java files's DOM. Having it, processor can analyze, validate or generate new code. Through the years multiple libraries started to use this API, the best known are probably JPA and GWT.
 
