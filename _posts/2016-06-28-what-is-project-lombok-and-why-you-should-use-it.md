@@ -87,5 +87,5 @@ It is important to note that those features would be useless without a good code
 ![placeholder](https://raw.githubusercontent.com/mikolajkania/mikolajkania.github.io/master/_images/2016-06-28-lombok-code-completion.png "Logged http requests")
 
 
-<h2>Final thouths</h2>
+<h2>Final thoughts</h2>
 Lombok is an interesting library that makes Java code more readable and faster to write. There is a lot more features to play with and I encourage you to try it on your own, even with mentioned danger of changing internal API that project uses. Remember, Lombok doesn't greatly intervene with your code, so abandoning it wouldn't be a costly operation. There is a lot more to earn during fast development process, where classed are created and discarded, so you should give it a chance.
