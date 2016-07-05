@@ -11,7 +11,7 @@ tags:
 ---
 
 <h2>Java & boilerplate code</h2>
-Java is well known for its necessity to write quite a lot of code to perform simple tasks: all this getter/setter methods [handled nicely by a competitors](https://msdn.microsoft.com/en-us/library/aa287786(v=vs.71).aspx), common [Problem Factories](https://i.imgur.com/y41pi4n.jpg), Calendar & Date or logging jumbo. As more languages with plain syntax arise, staying put with actual aproach seems to be a bit out-of-date. There are even some propositons to [add JavaScript's-like val folding](http://blog.joda.org/2016/03/var-and-val-in-java.html) to change things, but with Oracle's lacking investment it is hard to believe that any changes appear in a finite time. On the other hand Java ecosystem is full of decent libraries that can fill this gap; one of this libraries is Project Lombok.
+Java is well known for its necessity to write quite a lot of code to perform simple tasks: all this getter/setter methods [handled nicely by the competitors](https://msdn.microsoft.com/en-us/library/aa287786(v=vs.71).aspx), common [Problem Factories](https://i.imgur.com/y41pi4n.jpg), Calendar & Date or logging jumbo. As more languages with plain syntax arise, staying put with actual aproach seems to be a bit out-of-date. There are even some propositons to [add JavaScript's-like val folding](http://blog.joda.org/2016/03/var-and-val-in-java.html) to change things, but with Oracle's lacking investment it is hard to believe that any changes appear in a finite time. On the other hand Java ecosystem is full of decent libraries that can fill this gap; one of this libraries is Project Lombok.
 
 
 <h2>Project Lombok</h2>
