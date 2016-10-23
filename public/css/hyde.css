@@ -179,11 +179,11 @@ a.sidebar-nav-item:focus {
 
 /* Custom */
 .theme-base-custom .sidebar {
-  background-color: #00394d;
+  background-color: #384857;
 }
 .theme-base-custom .content a,
 .theme-base-custom .related-posts li a:hover {
-  color: #00394d;
+  color: #384857;
   font-weight:bold;
 }
 
