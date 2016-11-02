@@ -18,7 +18,7 @@ Recently, going through the Spring MVC documentation, I found a feature I haven'
 
 In the traditional - and still completely valid - approach an incoming request is handled by one thread from the beginning to the end of its lifecycle. It is a model which is dead-simple and effective due to performance of today's web applications servers, but have one big drawback: if there is a bunch of long-running requests, they can restict the availability of resources to other user threads. One can ask how it can be avoided, since server has to process everything and there is no magic in its code? 
 
-Imagine a situation when thread has to wait for a external resource, like a database or REST api - it may do nothing but still is reserved! Or when developer knows that server would consume more smaller requests but is afraid of changing max threads number in they server due to possibility of oncoming heavy requests.
+Imagine a situation when thread has to wait for a external resource, like a database or REST api - it may do nothing but still is reserved! Or when developer knows that server would consume more smaller requests but is afraid of changing max threads number in they server due to possibility of oncoming heavy ones.
 
 
 <h2>How it works?</h2>
