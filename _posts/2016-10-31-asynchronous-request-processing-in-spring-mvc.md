@@ -8,7 +8,9 @@ tags:
 - spring
 - spring mvc
 - jmeter
+- performance
 - jetty
+- servlet 3.0
 ---
 
 <h2>(A)synchronous request processing</h2>
@@ -30,7 +32,7 @@ As always when asynchrony appears, every developer wants to know what benefits a
 
 There will be a controller with majority of requests lasting 1 second (80%), leaving rest with 4 seconds. I will try to recreate existance of different requests life spans. 
 
-A JMeter test plan would include warmup with 100 threads and 25 iterations, the proper test - 1000 threads started over half a minute in 10 iterations. The most important metric would be a throughput, requests per second.
+A JMeter test plan would include warmup with 100 threads and 25 iterations, the proper test - 1000 threads started over half a minute in 10 iterations. The most important metric would be a throughput, requests per second. I will repeat tests multiple times and choose representative sample.
 
 I will use Jetty 9 and Java 8 64 bit runtime. Jetty will be configured to have at most 100 threads. Server mode for compilation is the [only one supported in 64bit](http://www.oracle.com/technetwork/java/hotspotfaq-138619.html#compiler_types) Java so it would be obviously enabled.
 
