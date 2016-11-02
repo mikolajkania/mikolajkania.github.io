@@ -93,7 +93,9 @@ Lets don't conceal it any longer - an asynchronous code is faster. When synchron
 ![placeholder](https://raw.githubusercontent.com/mikolajkania/mikolajkania.github.io/master/_images/servlet3-sync.png "Synchronous results")
 ![placeholder](https://raw.githubusercontent.com/mikolajkania/mikolajkania.github.io/master/_images/servlet3-async.png "Asynchronous results")
 
-To have a bigger picture I tested how both approaches would work with all requests taking one second to proceed. This time the difference is smaller, 95 to 250 operations per second. Interestingly, when I changed sleep time to 10ms the roles swapped or were nearly equals (for example 331,5 vs 331,3 operations per second for synchronous method)! This result leads to another topic.
+To have a bigger picture I tested how both approaches would work with all requests taking one second to proceed. This time the difference is smaller, 95 to 250 operations per second. I would like to emphasize correctness of the results in case of sync processing - 95 requests per second is really close to 100 threads I set in Jetty configuration and may be treated as a *sanity check*.
+
+Interestingly, when I changed sleep time to 10ms the roles swapped or were nearly equal (for example 331,5 vs 331,3 operations per second for synchronous method)! This result leads to another topic.
 
 <h2>Drawbacks?</h2>
 As always, there are some. Asynchronous processing will show its power only when requests are longer. Probably sometimes overhead resulting from preparing AsyncContext implementation may even reduce the performance or improvement will be negligible.
