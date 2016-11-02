@@ -14,11 +14,11 @@ tags:
 ---
 
 <h2>(A)synchronous request processing</h2>
-Recently, going through the Spring MVC documentation, I found a feature I havn't previously used - asynchronous request processing. It is an addition of [Servlet 3 API](https://jcp.org/en/jsr/detail?id=315) and a part of Java EE since its sixth edition from 2009; [Spring starts support it three years later](https://spring.io/blog/2012/05/07/spring-mvc-3-2-preview-introducing-servlet-3-async-support). As it looks interesting (and as *async* is a popular word in developer's journey since at least early Web 2.0 days) I decided to go deeper into details of it. 
+Recently, going through the Spring MVC documentation, I found a feature I haven't previously used - asynchronous request processing. It is an addition of [Servlet 3 API](https://jcp.org/en/jsr/detail?id=315) and a part of Java EE since its sixth edition from 2009; [Spring started support it three years later](https://spring.io/blog/2012/05/07/spring-mvc-3-2-preview-introducing-servlet-3-async-support). As it looks interesting (and as *async* is a popular word in developer's journey since at least early Web 2.0 days) I decided to go deeper into details of it. 
 
-In the traditional - and still completely valid - approach an incoming request is handled by one thread from the beginning to the end of its lifecycle. It is a model which is dead-simple and effective due to performance of today's web applications servers, but have one big drawback: if there is a bunch of long-running requests, they can restict the availability of resources to other user threads. One can ask how it can be avoided, since a server has to process everything and there is no magic in its code? 
+In the traditional - and still completely valid - approach an incoming request is handled by one thread from the beginning to the end of its lifecycle. It is a model which is dead-simple and effective due to performance of today's web applications servers, but have one big drawback: if there is a bunch of long-running requests, they can restict the availability of resources to other user threads. One can ask how it can be avoided, since server has to process everything and there is no magic in its code? 
 
-Imagine a situation when thread has to wait for a external resource like a database or REST api - it may do nothing but still is reserved! 
+Imagine a situation when thread has to wait for a external resource, like a database or REST api - it may do nothing but still is reserved! Or when developer knows that server would consume more smaller requests but is afraid of changing max threads number in they server due to possibility of oncoming heavy requests.
 
 
 <h2>How it works?</h2>
