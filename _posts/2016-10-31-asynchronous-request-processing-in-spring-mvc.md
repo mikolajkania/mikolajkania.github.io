@@ -73,7 +73,7 @@ private void sleep() throws InterruptedException {
 	}
 }
 {% endhighlight %}
-In Github repo I also included a warm method only to point out its importance in general testing - in such a simple use case it is only for fast detection of server problems.
+In Github repo I also included a *warm* method only to point out its importance in general testing - in such a simple use case it is only for fast detection of server problems.
 
 Lastly, the code for Jetty threads from Jetty.xml:
 {% highlight xml %}
