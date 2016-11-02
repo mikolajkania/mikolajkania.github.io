@@ -22,7 +22,7 @@ Imagine a situation when thread has to wait for a external resource, like a data
 
 
 <h2>How it works?</h2>
-In the Servlet 3.0 world request can be 'left' by its initial container thread with AsyncContext implementation containing all necessary data required to resume execution. The leaving thread is exited but from the client perspective there is the same simple anticipation of a result - it will only be completed by another thread. 
+In the Servlet 3.0 world request can be *left* by its initial container thread with AsyncContext implementation containing all necessary data required to resume execution. The leaving thread is exited but from the client perspective there is the same simple anticipation of a result - it will only be completed by another thread. 
 
 Developer has to provide a *Callable* or *DeferredResult* as a return of MVC Controller and Spring will do the rest. Sounds simple? As always the devil is in the details, but this knowledge should be enough to bootstrap a exemplary project and test the difference between sync and async requests. For more detailed information about a flow, yet rather laconic, I recommend [Spring Docs.](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html#mvc-ann-async)
 
