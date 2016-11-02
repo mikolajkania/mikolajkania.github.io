@@ -100,7 +100,7 @@ Interestingly, when I changed sleep time to 10ms the roles swapped or were nearl
 <h2>Drawbacks?</h2>
 As always, there are some. Asynchronous processing will show its power only when requests are longer. Probably sometimes overhead resulting from preparing AsyncContext implementation may even reduce the performance or improvement will be negligible.
 
-I'd also point out that the code becomes less straightforward and harder to debug, errors should have another handling which also adds layer of complexity.
+I'd also point out that the code becomes less straightforward and harder to debug, errors should have another handling, which also adds layer of complexity.
 
 <h2>Conclusion</h2>
 [Is asynchronous request processing worth your time?](http://itblues.pl/2016/10/31/asynchronous-request-processing-in-spring-mvc/) Yes, but it depends. There are cases when it can be a good answer to performance problems: as I showed above it improved results three times in terms of throughput compared to synchronous equivalent. Keep in mind drawbacks and familiarize yourself with this solution and maybe it will save you someday.
