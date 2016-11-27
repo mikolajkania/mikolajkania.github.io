@@ -18,7 +18,9 @@ author:
   name:           'Mikołaj Kania'
   url:            https://pl.linkedin.com/in/mikolajkania
 
-paginate:         5
+paginate:         6
+
+excerpt_separator: <!--excerpt-->
 
 # Custom vars
 #version:          2.1.0

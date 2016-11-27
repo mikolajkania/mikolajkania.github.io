@@ -10,6 +10,8 @@ tags:
 
 The ideal situation is when whole index can be located in memory, due to disk operations are much slower then those in RAM. What's more, often companies have to fit the requirenments of the tender or reduce server costs, which put pressure on developers to come up with a solution that will make the index smaller.
 
+<!--excerpt-->
+
 Having this all in mind it's not surprising that field compression is an important feature due to its ability to significantly decrease an index size.
 
 Since Solr 4.1 stored fields - responsible for majority of an index size - are by default compressed. In Solr 5.5 release limited ability to adjust compression level occurs, [with two modes to choose from](https://cwiki.apache.org/confluence/display/solr/Codec+Factory): BEST_SPEED (BS) & BEST_COMPRESSION (BC). 

@@ -11,6 +11,8 @@ tags:
 
 Server side request forgery occurs when attacker enters one application and is able to use to it to perform some activity on another application(s). It can be scaning internal network, calling services or making request to another website - our case. Note, that a hacked application would be responsible for an attack - as it produces a call! - not hacker's machine. More information can be found on numerous sites on the Internet, e.g. [here](https://blogs.mcafee.com/mcafee-labs/server-side-request-forgery-takes-advantage-vulnerable-app-servers/).
 
+<!--excerpt-->
+
 An example I created consists of two applications. *Hacked* is a Node.js/Express/AngularJS app that calls server with an URL of an image it would like to display. Frontend makes a call to backend which retrives a graphic.  
 
 *Listener* is a logging app that listens to incoming calls and logs those with url containg */hack/was/made* string. Replacing an image URL with prepared one will make a *Hacked* service create unwanted request. Configuration of both apps is [described on my GitHub page](https://github.com/mikolajkania/ServerSideRequestForgery).
