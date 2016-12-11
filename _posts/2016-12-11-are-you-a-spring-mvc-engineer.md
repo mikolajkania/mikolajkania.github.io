@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Are you a Spring MVC engineer or rather a coder? 
+title: Are you a Spring MVC engineer? 
 tags:
 - java
 - spring
@@ -9,7 +9,7 @@ tags:
 - configuration
 - test yourself
 ---
-It's not bad to use a framework without complete knowledge of its internals, but there are fundamental topics that every developer should have covered. Below I'm asking three questions which are - sadly - not obvious for everyone working with Spring MVC. Are you really know what is going on under the hood when your web application starts?
+It's not bad to use a framework without complete knowledge of its internals, but there are fundamental topics that every developer should have covered. Below I'm asking three questions which are - sadly - not obvious for everyone working with Spring MVC. Are you really know what is going on under the hood when your web application starts? It may be your starting point:
 
 1. What is WEB-INF directory and where it come from?
 2. What is web.xml and is it necessary to have it in the application?
