@@ -18,7 +18,7 @@ Basically it is an abstract class to process document before it is indexed. Conf
 The applications of processors are wide as they allow to add, modify and delete entire fields. It can be used to add custom ones with entities extracted from content, assign document to one of predefined groups depending on terms it contains, detect language or add debug data.
 
 <h2>The plan</h2>
-Let's say we have a Solr plugin that updates indexed document depending on one of its fields. In a real application it would probably do some text-oriented operations, which is Solr's main area, but for the purpose of this post it will add a new field with title word count. As you can imagine avoiding populating model with debug data, such as length of a field, may be another advantage of using processors.
+Let's say we have a Solr plugin that updates indexed document depending on one of its fields. In a real application it would probably do some text-oriented operations, which is Solr's main area, but for the purpose of this post it will add a new field with title words count. As you can imagine avoiding populating model with debug data, such as length of a field, may be another advantage of using processors.
 
 <h2>The code</h2>
 Let's make input data plain and simple:
@@ -75,7 +75,7 @@ public class SimpleArticleProcessorFactory extends UpdateRequestProcessorFactory
 }
 {% endhighlight %}
 
-Adding a new field is as simple as calling few methods:
+Adding a new field is as simple as calling a few methods:
 {% highlight java %}
 public class SimpleArticleProcessor extends UpdateRequestProcessor {
     public SimpleArticleProcessor(UpdateRequestProcessor next) {
