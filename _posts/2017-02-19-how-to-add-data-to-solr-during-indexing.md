@@ -112,4 +112,6 @@ Voila! Nothing more have to be done. If you index a new document it will go thro
   }}
 {% endhighlight %}
 
+Let's me explain now how is this connected to updating document based on data already existing in the index. Imagine that you have collection previously filled with information: dictionary values or important concepts. During document indexing you can use this data to perform operations on submitted fields, for example to replace dictionary idies with its names or to retrieve concepts and index them in another field. You can call service that takes URL from text and replace it with name and link. The possibilities are endless, but that operations could not be trival to perform, of course.
+
 In the next post I would show more advanced use case for using processor - extracting entities from document content. Stay tuned!
