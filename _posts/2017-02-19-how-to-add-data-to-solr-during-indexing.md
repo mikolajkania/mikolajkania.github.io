@@ -91,7 +91,7 @@ public class SimpleArticleProcessor extends UpdateRequestProcessor {
 }
 {% endhighlight %}
 
-<h2>Results</h2>
+<h2>The results</h2>
 Voila! Nothing more have to be done. If you index a new document it will go through a chain of processors and end with three fields. The response from Solr could looks like this:
 {% highlight json %}
 {
