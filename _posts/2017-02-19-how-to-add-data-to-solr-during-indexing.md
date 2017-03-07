@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to add custom data to Solr document during indexing?
+title: How to add data to Solr document during indexing?
 tags:
 - solr
 - indexing
