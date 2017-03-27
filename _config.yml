@@ -9,9 +9,10 @@ permalink:        pretty
 title:            itblues.pl
 tagline:          'Programming blog by Mikołaj Kania'
 description:      'Programming blog by <a href="https://pl.linkedin.com/in/mikolajkania" target="_blank">Mikołaj Kania</a>.'
-linkedin:		  https://pl.linkedin.com/in/mikolajkania
-twitter:		  https://twitter.com/mikolajkania
+linkedin:		      https://pl.linkedin.com/in/mikolajkania
+twitter:		      https://twitter.com/mikolajkania
 url:              itblues.pl
+rss:              itblues.pl/atom.xml
 baseurl:          /
 
 author:
