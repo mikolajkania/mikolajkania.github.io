@@ -12,7 +12,7 @@ description:      'Programming blog by <a href="https://pl.linkedin.com/in/mikol
 linkedin:		      https://pl.linkedin.com/in/mikolajkania
 twitter:		      https://twitter.com/mikolajkania
 url:              itblues.pl
-rss:              itblues.pl/atom.xml
+rss:              http://itblues.pl/atom.xml
 baseurl:          /
 
 author:
