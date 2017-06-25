@@ -91,7 +91,7 @@ public UpdateResponse add(String collection, Collection<SolrInputDocument> docs,
 {% endhighlight %}
 For more information about that process I would again point you to my [previous post](http://itblues.pl/2017/02/19/how-to-add-data-to-solr-during-indexing/).
 
-Processor I wrote retrieves id of document being indexed and then calls handler responsible for text tagging. Returned cities ids are added as a new field to the document. 
+Processor I wrote retrieves one of the document fields and pass it to handler responsible for text tagging. Returned cities ids are added as a new field to the document. 
 {% highlight java %}
 @Override
 public void processAdd(AddUpdateCommand cmd) throws IOException {
@@ -99,14 +99,17 @@ public void processAdd(AddUpdateCommand cmd) throws IOException {
   SolrIndexSearcher searcher = req.getSearcher();
 
   NamedList<String> tagParams = new NamedList<>();
-  tagParams.add(TaggerRequestHandler.DOCUMENT_ID, 
-    cmd.getPrintableId());
+  tagParams.add(TaggerRequestHandler.TEXT_TO_TAG, 
+    cmd.getLuceneDocument().
+	getField("title_t").
+	stringValue());
 
   SolrQueryResponse response = new SolrQueryResponse();
   SolrRequestHandler tagHandler = 
     searcher.getCore().getRequestHandler("/tag");
   tagHandler.handleRequest(new LocalSolrQueryRequest
     (searcher.getCore(), tagParams), response);
+	
 
   List<NamedList> tags = (List<NamedList>) 
     response.getValues().get("tags");
@@ -125,17 +128,16 @@ public void processAdd(AddUpdateCommand cmd) throws IOException {
 It is worth to mention, that cities list I used is part of Solr Text Tagger so you can also use it for tests.
 
 <h2>Tagging</h2>
-Despite the fact that Solr Text Tagger is a working piece of code I decided to fork it and change behaviour slightly. In a normal mode it works on provided text; I wanted it to process indicated field of a document. It is reflected in solr config definition of handler & *documentField* addition:
+Despite the fact that Solr Text Tagger is a working piece of code I decided to fork it and change behaviour a bit - I've changed a way it processes text that has to be tagged:
 {% highlight xml %}
 <requestHandler name="/tag" class="org.opensextant.solrtexttagger.TaggerRequestHandler">
   <lst name="defaults">
-    <str name="field">city_names_tags</str>
-    <str name="documentField">title_t</str>
+    <str name="field">city_names_tags</str>    
     <str name="overlaps">LONGEST_DOMINANT_RIGHT</str>  
   </lst>
 </requestHandler>
 {% endhighlight %}
-*Field* says from which field tags should be retieved, *overlaps* - how overlapping entities should be proceed (for example *York* & *New York*). In this case only the longest one will be returned. More detailed information about changes I made to tagger could be found [on Github](https://github.com/mikolajkania/SolrTextTagger/blob/master/src/main/java/org/opensextant/solrtexttagger/TaggerRequestHandler.java). It isn't production ready code yet and some tweaks & tests are necessary.
+*Field* says from which field tags should be retieved, *overlaps* - how overlapping entities should be proceed (for example *York* & *New York*). In this case only the longest one will be returned. More detailed information about changes I made to tagger could be found [on Github](https://github.com/mikolajkania/SolrTextTagger/blob/b01f4bb7d385d1cad7a691a138c2aee407925219/src/main/java/org/opensextant/solrtexttagger/TaggerRequestHandler.java).
 
 <h2>Testing</h2>
 I added article with title *Mario Balotelli Brendan Rodgers will help me realise my potential at Liverpool FC - Liverpool Echo* to Solr. As expected, indexed tag was the one with id 2644210 - Liverpool.
