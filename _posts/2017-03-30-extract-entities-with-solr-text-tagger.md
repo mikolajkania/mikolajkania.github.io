@@ -130,7 +130,7 @@ public void processAdd(AddUpdateCommand cmd) throws IOException {
 It is worth to mention, that cities list I used is part of Solr Text Tagger so you can also use it for tests.
 
 <h2>Tagging</h2>
-Despite the fact that Solr Text Tagger is a working piece of code I decided to fork it and change behaviour a bit - I've changed a way it processes text that has to be tagged:
+Despite the fact that Solr Text Tagger is a working piece of code I decided to fork it and change behaviour a bit - I've changed a way it processes text that has to be tagged. Solrconfig definition is not changed, but I've provided my version of the library to Solr instance:
 {% highlight xml %}
 <requestHandler name="/tag" class="org.opensextant.solrtexttagger.TaggerRequestHandler">
   <lst name="defaults">
