@@ -22,6 +22,8 @@ To demonstrate entity extraction I will track down cities names in the indexed d
 
 I will also show that cities might be found in a query, with their offsets. This can be used to change initial text to enable proximity search or query another set of fields.
 
+It worth to mention that Solr Text Tagger works with user-defined list of entities. What's more, one entity can be recognized by many names, in my case - citites names from different countries.
+
 <h2>How it works?</h2>
 On a high level of abstraction it would work as follows: Solr Text Tagger scans text in search of previosly declared entities. Those entites are Solr documents with id & names, in my case *city_names_tags*. 
 {% highlight xml %}
@@ -161,7 +163,7 @@ It also worked as expected. I'd suggest paying attention to offsets returned by 
 
 ![placeholder](https://raw.githubusercontent.com/mikolajkania/mikolajkania.github.io/master/_images/2017-03-30-results.PNG "curl results")
 
-I run more queries and didn't encounter any problems with Solr Text Tagger - the only difficulties are result of data. I preprocessed them a bit - filtered out cities with population less then 100k to avoid entries like *Merkel* - but more should be done. For example if in title appears word *liga* (*league* in Polish) it would be recognized as Latvian *Riga*. Cities names should be adjusted to language of a document and only a subset of them should be used - but this & other improvements are out of scope of this post.
+I run more queries and didn't encounter any problems with Solr Text Tagger - the only difficulties are results of data. I preprocessed them a bit - filtered out cities with population less then 100k to avoid entries like *Merkel* - but more should be done. For example if in title appears word *liga* (*league* in Polish) it would be recognized as Latvian *Riga* (as it is one of foreign names of this city). Cities names should be adjusted to language of a document or search and only a subset of them used - but this & other improvements are out of scope of this post.
 
 <h2>Summary</h2>
-In this post I proved that - with minor modifications - Solr Text Tagger can be used to extract entities from texts of documents being indexed. They can be a subject of further processing, like addition to a document field or modification of user query. Another approach could be using their offsets to add payloads to texts, and then boost documents - but it may be a topic for another post.
+In this post I proved that - with minor modifications - Solr Text Tagger can be used to extract entities from texts of the documents being indexed. They can be a subject of further processing, like addition to a document field or modification of user query. Another approach could be using their offsets to add payloads to texts, and then boost documents - but it may be a topic for another post. 
