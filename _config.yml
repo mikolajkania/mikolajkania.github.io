@@ -1,6 +1,6 @@
 # Dependencies
 markdown:         kramdown
-highlighter:      rouge
+highlighter:      true
 
 # Permalinks
 permalink:        pretty
@@ -9,8 +9,9 @@ permalink:        pretty
 title:            itblues.pl
 tagline:          'Programming blog by Mikołaj Kania'
 description:      'Programming blog by <a href="https://pl.linkedin.com/in/mikolajkania" target="_blank">Mikołaj Kania</a>.'
-linkedin:		      https://pl.linkedin.com/in/mikolajkania
-twitter:		      https://twitter.com/MikolajKania
+linkedin:		  https://pl.linkedin.com/in/mikolajkania
+twitter:		  https://twitter.com/MikolajKania
+medium:           https://medium.com/@mikolajkania
 url:              itblues.pl
 rss:              http://itblues.pl/atom.xml
 
