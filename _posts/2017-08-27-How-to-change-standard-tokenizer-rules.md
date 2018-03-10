@@ -24,7 +24,7 @@ There may be multiple ways to define rules how text should be tokenized, but the
 Those rules are defined in a [file](https://github.com/apache/lucene-solr/blob/master/lucene/core/src/java/org/apache/lucene/analysis/standard/StandardTokenizerImpl.jflex) together with class structure (name, package, imports) and then [JFlex library](http://jflex.de/) uses this notation to generate Java class that can be used in Solr.  
 
 
-Rules alone are not something you want to analyse if you don't have to, so let's look at the most interesting part of a [documentation](http://unicode.org/reports/tr29/#Table_Word_Break_Property_Values). It's easy to spot that values from these table can be mapped to variables mentioned in [StandardTokenizerImpl.jflex]((https://github.com/apache/lucene-solr/blob/master/lucene/core/src/java/org/apache/lucene/analysis/standard/StandardTokenizerImpl.jflex)). For example _Hebrew_Letter_ can be found as a variable _HebrewLetter_ and as a part of a rule: 
+Rules alone are not something you want to analyse if you don't have to, so let's look at the most interesting part of a [documentation](http://unicode.org/reports/tr29/#Table_Word_Break_Property_Values). It's easy to spot that values from these table can be mapped to variables mentioned in [StandardTokenizerImpl.jflex](https://github.com/apache/lucene-solr/blob/master/lucene/core/src/java/org/apache/lucene/analysis/standard/StandardTokenizerImpl.jflex). For example _Hebrew_Letter_ can be found as a variable _HebrewLetter_ and as a part of a rule: 
 
 {% highlight text %}HebrewOrALetterEx = [\p{WB:HebrewLetter}\p{WB:ALetter}] [\p{WB:Format}\p{WB:Extend}]* {% endhighlight %}
 
