@@ -15,7 +15,7 @@ Server side request forgery occurs when attacker enters one application and is a
 
 An example I created consists of two applications. *Hacked* is a Node.js/Express/AngularJS app that calls server with an URL of an image it would like to display. Frontend makes a call to backend which retrives a graphic.  
 
-*Listener* is a logging app that listens to incoming calls and logs those with url containg */hack/was/made* string. Replacing an image URL with prepared one will make a *Hacked* service create unwanted request. Configuration of both apps is [described on my GitHub page](https://github.com/mikolajkania/ServerSideRequestForgery).
+*Listener* is a logging app that listens to incoming calls and logs those with url containg */hack/was/made* string. Replacing an image URL with prepared one will make a *Hacked* service create unwanted request. Configuration of both apps is [described on my GitHub page](https://github.com/mikolajkania/server-side-request-forgery).
 
 Let's move to a hacking part. Enter the *Hacked* app and click a button displaying qout and image of well-known author. Next check that *connections.log* in *Listener* service is still empty, as provided application works just fine downloading expacted data. Then open an favourite browser debugger and replace calling code in *hacked-ctrl.js* with this:
 
