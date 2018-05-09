@@ -194,7 +194,7 @@ a.sidebar-nav-item:focus {
   list-style-type: circle;
   font-weight:900;
   li {
-    display: inline-block;  
+    display: inline-block;
   }
 }
 #archives {
@@ -244,4 +244,4 @@ a.post-footer-link:visited {color:#9a9a9a}
   -webkit-background-size: 3px 3px;
   -moz-background-size: 3px 3px;
   background-size: 3px 3px;
-  }
+}

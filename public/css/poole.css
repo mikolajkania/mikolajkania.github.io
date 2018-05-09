@@ -164,7 +164,7 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   padding: 1rem;
-  font-size: .8rem;
+  font-size: .7rem;
   line-height: 1.4;
   white-space: pre;
   white-space: pre-wrap;
@@ -181,9 +181,11 @@ pre code {
 
 /* Pygments via Jekyll */
 .highlight {
-  margin-bottom: 1rem;
+  margin: 0 0 1rem;
+  line-height: 1.8;
   border-radius: 4px;
 }
+
 .highlight pre {
   margin-bottom: 0;
 }
