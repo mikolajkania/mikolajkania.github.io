@@ -144,7 +144,7 @@ abbr {
 }
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dotted #e5e5e5;
+  border-bottom: 1px #e5e5e5;
 }
 
 /* Code */
