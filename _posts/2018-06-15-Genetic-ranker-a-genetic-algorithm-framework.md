@@ -37,18 +37,18 @@ Genetic algorithms are inspired by a process of natural selection. Let me borrow
 
 Putting aside the results of various optimisation experiments, genetic programming looks like a good bet for these kind of problem.    
 
-Firstly, it is easy to define a problem as set of numeric weights that can be altered during processing. Mutation, crossover & reproduction parts of the algorithm can easily be done on numbers. Think about an individual of a population as a series of digits, where every entry is a weight of a another field (i.e. [5, 1, 5, 7, 9, 4, 3, 0]). 
+Firstly, it is easy to define a candidate solution as a set of numeric weights that can be altered during processing. Mutation, crossover & reproduction parts of the algorithm can easily be done on numbers. Think about an individual of a population as a series of digits, where every entry is a weight of another field (i.e. [5, 1, 5, 7, 9, 4, 3, 0]). 
 
-Secondly, genetic algorithms are able to preserve solutions that are promising, even without actual understanding of a problem. Better species (individuals) will be kept and be an ancestors for even better ones.
+Secondly, genetic algorithms are able to preserve solutions that are promising, even without actual understanding of a problem. Better species (individuals) will be kept as an ancestors for even better ones.
 
 Thirdly, due to mutation & crossover parts, algorithm adds a bit of randomness to the process. Every algorithm is prone to find a local minimum, that is a good but not the best solution. But with random changes applied to the individuals genetic algorithm may catch on the trail.  
 
 ## Performance
 
-It may come as a surprise how many combinations of fields and weights are available. According to variation with repetition having 7 fields with 5 possible weights (i.e. even numbers between 0 and 9) we end up with 78125 combinations. We are almost sure that among those combinations is a perfect one, but a cost of computation is a big one. And it is only [an easy example](https://github.com/mikolajkania/genetic-ranker#test-it-yourself) I've prepared to illustrate how Genetic Ranker works, not a real, complicated use case. For a document with 20 fields there is 95 trillions of combinations!
+It may come as a surprise how many combinations of fields and weights are available. According to [a variation with repetition](http://www.emathematics.net/combinavrepeticion.php) having 7 fields with 5 possible weights (i.e. even numbers between 0 and 9) we end up with 78125 combinations. We are almost sure that among those combinations is a perfect one, but a cost of computation is a big one. And it is only [an easy example](https://github.com/mikolajkania/genetic-ranker#test-it-yourself) I've prepared to illustrate how Genetic Ranker works, not a real, complicated use case. For a document with 20 fields there is 95 trillions of combinations!
 
-How Genetic Ranker looks in a comparison? It can repeatedly deliver the best solution in less than 300 evaluations, which was then reduced almost by half by introducing cache: during processing there is probability that certain combinations would reappear due to crossover or mutation. And Genetic Ranker was not work on even numbers but whole range from 0 to 10.    
+How Genetic Ranker looks in a comparison? It can repeatedly deliver the best solution in less than 300 evaluations, which was then reduced by third by introducing cache: during processing there is probability that certain combinations would reappear due to crossover or mutation. And Genetic Ranker was not work on even numbers but whole range from 0 to 10.    
 
 ## Summary
 
-[Genetic Ranker](https://github.com/mikolajkania/genetic-ranker) is a framework that gives search engineer a flexible tool. Depending on the index size they can choose more generations and individuals to get better results or end expensive computations sooner and use best combinations as a starting point for further analysis. Either way it will boost a process of preparing high quality search. Give it a try!
+[Genetic Ranker](https://github.com/mikolajkania/genetic-ranker) is a framework that gives search engineer a flexible tool. Depending on the index size they can choose more generations boost quality or end expensive computations sooner and treat results as a starting point for further analysis. Either way it will boost a process of preparing high quality search. Give it a try!
