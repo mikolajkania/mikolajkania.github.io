@@ -53,10 +53,11 @@ Let's discuss what is important here: during indexing tokens in *tag* field are 
 
 **What is FST?** It is a kind of finite state machine (FSM), that is a graph with nodes (states) & labels (edges). Finite state machine has an input which determines transitions between nodes. FST is an extension of state machine with an output node. In Lucene it is used to map term into integer and is implemented by Michael McCandless, whose [example of a structure](http://blog.mikemccandless.com/2010/12/using-finite-state-transducers-in.html) is quite clear:
 ![placeholder](https://raw.githubusercontent.com/mikolajkania/mikolajkania.github.io/master/_images/2017-03-30-fst.png "fst")
-{% highlight text %}FST maps the sorted words mop, moth, pop, star, stop and top 
+> FST maps the sorted words mop, moth, pop, star, stop and top 
 to their ordinal number (0, 1, 2, ...). As you traverse the 
 arcs, you sum up the outputs, so stop hits 3 on the s and 1 
-on the o, so its output ordinal is 4.{% endhighlight %}
+on the o, so its output ordinal is 4.
+
 **These mapping reduces memory usage, but increases CPU cost** of lookups. As the memory is main problem with Solr/ Lucene, it's a cost we can afford. 
 
 The last question to answer in this section is **how the extraction algorithm works** with this FST representation. Let's say we are quering a phrase *new york times* - there is a hit for *new* as there are multiple city names starting that way. Then the second token in taken into consideration, and still there is a hit in directory (*new york*), but *york* alone is also marked as a takeoff for a new entity. The next steps would be checking *new york times* and *york times*, which in both cases mean end of lookup. *Times* is also a dead end, so we finish with entities *york* & *new york* unless overlapping is enabled. The path for such result is as follow:
