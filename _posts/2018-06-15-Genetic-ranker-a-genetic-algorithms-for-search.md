@@ -28,7 +28,7 @@ Another thing is necessity to automatically perform and view a summary of the re
 
 ## What is a solution?
 
-Not surprisingly, you need an automatic system that do the most of the work for you. Having some background in search engineering and machine learning I've came up with idea of [genetic programming framework](https://github.com/mikolajkania/project-x) doing exactly that. 
+Not surprisingly, you need an automatic system that do the most of the work for you. Having some background in search engineering and machine learning I've came up with idea of [genetic programming framework](https://github.com/mikolajkania/genetic-ranker) doing exactly that. 
 
 Genetic algorithms are inspired by a process of natural selection. Let me borrow a more in-depth explanation from [a quality guide](https://www.tutorialspoint.com/genetic_algorithms/genetic_algorithms_quick_guide.htm):
 > In genetic algorithms, we have a pool or a population of possible solutions to the given problem. These solutions then undergo recombination and mutation (like in natural genetics), producing new children, and the process is repeated over various generations. Each individual (or candidate solution) is assigned a fitness value and the fitter individuals are given a higher chance to mate and yield more 'fitter' individuals.
