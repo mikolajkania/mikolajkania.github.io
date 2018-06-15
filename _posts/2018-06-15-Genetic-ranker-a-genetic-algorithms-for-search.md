@@ -1,8 +1,14 @@
 ---
 layout: post
 title: Genetic Ranker - genetic algorithms for search 
-tags: 
-- todo
+tags:  
+- genetic ranker
+- genetic algorithms
+- search
+- python
+- github
+- open source
+- search quality
 
 ---
 
