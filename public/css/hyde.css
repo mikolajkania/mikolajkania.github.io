@@ -98,6 +98,12 @@ a.sidebar-nav-item:focus {
   font-weight: bold;
 }
 
+@media(max-width: 768px) {
+    .sidebar-nav {
+        display: none;
+    }
+}
+
 /* Sticky sidebar
  *
  * Add the `sidebar-sticky` class to the sidebar's container to affix it the
@@ -121,8 +127,8 @@ a.sidebar-nav-item:focus {
  */
 
 .content {
-  padding-top:    4rem;
-  padding-bottom: 4rem;
+  padding-top:    1rem;
+  padding-bottom: 1rem;
 }
 
 @media (min-width: 48em) {
