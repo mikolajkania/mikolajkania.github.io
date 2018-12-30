@@ -12,14 +12,6 @@
     <hr class="hr-sidebar"/>
 
     <nav class="sidebar-nav">
-	  <a class="sidebar-nav-item" href="{{ site.twitter }}" target="_blank">Twitter</a>
-
-	  <a class="sidebar-nav-item" href="{{ site.github.repo }}" target="_blank">Github</a>
-
-      <a class="sidebar-nav-item" href="{{ site.medium}}" target="_blank">Medium</a>
-	    
-	  <a class="sidebar-nav-item" href="{{ site.rss }}" target="_blank">RSS</a>
-
       {% comment %}
         The code below dynamically generates a sidebar nav of pages with
         `layout: page` in the front-matter. See readme for usage.
@@ -32,8 +24,18 @@
             <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}" >{{ node.title }}</a>
           {% endif %}
         {% endif %}
-      {% endfor %}         
-     
+      {% endfor %}
+
+      <a class="sidebar-nav-item" href="{{ site.twitter }}" target="_blank">Twitter</a>
+
+      <a class="sidebar-nav-item" href="{{ site.github.repo }}" target="_blank">Github</a>
+
+      <a class="sidebar-nav-item" href="{{ site.medium}}" target="_blank">Medium</a>
+
+      <a class="sidebar-nav-item" href="{{ site.rss }}" target="_blank">RSS</a>
+
+      <a class="sidebar-nav-item" href="https://feedburner.google.com/fb/a/mailverify?uri=Itbluespl&amp;loc=en_US">Subscribe via email</a>
+
     </nav>
 
     <hr class="hr-sidebar"/>
