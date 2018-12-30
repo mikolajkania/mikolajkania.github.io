@@ -45,7 +45,7 @@ html {
   }
 }
 
-hr {
+.hr-sidebar {
     border: 0 #9a9a9a;
     height: 1px;
     background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
@@ -69,7 +69,7 @@ hr {
 }
 @media (min-width: 48em) {
   .sidebar {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
@@ -112,6 +112,9 @@ a.sidebar-nav-item:focus {
         display: none;
     }
   .adsense-sidebar {
+      display: none;
+  }
+  .hr-sidebar {
       display: none;
   }
 }
@@ -196,7 +199,7 @@ a.sidebar-nav-item:focus {
 
 /* Custom */
 .theme-base-custom .sidebar {
-  background-color: #efefef;
+  background-color: white;
 }
 .theme-base-custom .content a,
 .theme-base-custom .related-posts li a:hover {
