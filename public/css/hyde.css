@@ -102,6 +102,9 @@ a.sidebar-nav-item:focus {
     .sidebar-nav {
         display: none;
     }
+  .adsense-sidebar {
+      display: none;
+  }
 }
 
 /* Sticky sidebar
