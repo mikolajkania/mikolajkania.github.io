@@ -330,9 +330,13 @@ tbody tr:nth-child(odd) th {
  * page is wrapped in `.page` and is only used on the page layout.
  */
 
+.posts {
+  margin-left: 1.2rem;
+}
+
 .page,
 .post {
-  margin-bottom: 3em;
+  margin-bottom: 2em;
 }
 
 /* Blog post or page title */
