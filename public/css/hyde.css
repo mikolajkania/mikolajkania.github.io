@@ -63,8 +63,7 @@ html {
 
 .sidebar {
   text-align: center;
-  padding: 2.25em 1.6875em;
-/*  background: linear-gradient(45deg, #2BC0E4, #EAECC6);*/
+  padding: 3em 1.6875em;
 }
 @media (min-width: 48em) {
   .sidebar {
@@ -106,18 +105,6 @@ a.sidebar-nav-item:focus {
   font-weight: bold;
 }
 
-@media(max-width: 768px) {
-    .sidebar-nav {
-        display: none;
-    }
-  .adsense-sidebar {
-      display: none;
-  }
-  .hr-sidebar {
-      display: none;
-  }
-}
-
 /* Sticky sidebar
  *
  * Add the `sidebar-sticky` class to the sidebar's container to affix it the
@@ -141,7 +128,7 @@ a.sidebar-nav-item:focus {
  */
 
 .content {
-  padding-top:    1rem;
+  padding-top:    2rem;
   padding-bottom: 1rem;
 }
 
@@ -158,6 +145,29 @@ a.sidebar-nav-item:focus {
     margin-left: 22rem;
     margin-right: 4rem;
   }
+}
+
+/*
+ * Hiding sidebar
+ */
+@media(max-width: 768px) {
+    .sidebar {
+        text-align: center;
+        padding: 1em 1.6875em;
+    }
+    .sidebar-nav {
+        display: none;
+    }
+    .adsense-sidebar {
+        display: none;
+    }
+    .hr-sidebar {
+        display: none;
+    }
+    .content {
+        padding-top:    0;
+        padding-bottom: 1rem;
+    }
 }
 
 
