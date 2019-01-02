@@ -12,7 +12,7 @@ tags:
 
 ---
 
-Working as a search engineer myself I decided to [develop a framework](https://github.com/mikolajkania/genetic-ranker) for finding optimal query weights for search engines like Elasticsearch or Solr. It is based on a machine learning branch called genetic programming, inspired by the process of natural selection. In this post I'll describe it and briefly discuss how the good process of building the quality of search should look like. Let's start!
+Working as a search engineer myself I decided to [develop a framework](https://github.com/mikolajkania/genetic-ranker){:target="_blank"} for finding optimal query weights for search engines like Elasticsearch or Solr. It is based on a machine learning branch called genetic programming, inspired by the process of natural selection. In this post I'll describe it and briefly discuss how the good process of building the quality of search should look like. Let's start!
 
 <!--excerpt-->
 
@@ -34,9 +34,9 @@ Another thing is necessity to automatically perform and view a summary of the re
 
 ## What is a solution?
 
-Not surprisingly, you need an automatic system that do the most of the work for you. Having some background in search engineering and machine learning I've came up with idea of [genetic programming framework](https://github.com/mikolajkania/genetic-ranker) doing exactly that. 
+Not surprisingly, you need an automatic system that do the most of the work for you. Having some background in search engineering and machine learning I've came up with idea of [genetic programming framework](https://github.com/mikolajkania/genetic-ranker){:target="_blank"} doing exactly that. 
 
-Genetic algorithms are inspired by a process of natural selection. Let me borrow a more in-depth explanation from [a quality guide](https://www.tutorialspoint.com/genetic_algorithms/genetic_algorithms_quick_guide.htm):
+Genetic algorithms are inspired by a process of natural selection. Let me borrow a more in-depth explanation from [a quality guide](https://www.tutorialspoint.com/genetic_algorithms/genetic_algorithms_quick_guide.htm){:target="_blank"}:
 > In genetic algorithms, we have a pool or a population of possible solutions to the given problem. These solutions then undergo recombination and mutation (like in natural genetics), producing new children, and the process is repeated over various generations. Each individual (or candidate solution) is assigned a fitness value and the fitter individuals are given a higher chance to mate and yield more 'fitter' individuals.
 
 ## Why use genetic algorithms?
@@ -51,10 +51,10 @@ Thirdly, due to mutation & crossover parts, algorithm adds a bit of randomness t
 
 ## Performance
 
-It may come as a surprise how many combinations of fields and weights are available. According to [a variation with repetition](http://www.emathematics.net/combinavrepeticion.php) having 7 fields with 5 possible weights (i.e. even numbers between 0 and 9) we end up with 78125 combinations. We are almost sure that among those combinations is a perfect one, but a cost of computation is a big one. And it is only [an easy example](https://github.com/mikolajkania/genetic-ranker#test-it-yourself) I've prepared to illustrate how Genetic Ranker works, not a real, complicated use case. For a document with 20 fields there is 95 trillions of combinations!
+It may come as a surprise how many combinations of fields and weights are available. According to [a variation with repetition](http://www.emathematics.net/combinavrepeticion.php){:target="_blank"} having 7 fields with 5 possible weights (i.e. even numbers between 0 and 9) we end up with 78125 combinations. We are almost sure that among those combinations is a perfect one, but a cost of computation is a big one. And it is only [an easy example](https://github.com/mikolajkania/genetic-ranker#test-it-yourself){:target="_blank"} I've prepared to illustrate how Genetic Ranker works, not a real, complicated use case. For a document with 20 fields there is 95 trillions of combinations!
 
 How Genetic Ranker looks in a comparison? It can repeatedly deliver the best solution in less than 500 evaluations, which was then reduced by half by introducing cache: during processing there is probability that certain combinations would reappear due to crossover or mutation. And Genetic Ranker didn't work on even numbers but on the whole range from 0 to 10.
 
 ## Summary
 
-[Genetic Ranker](https://github.com/mikolajkania/genetic-ranker) is a framework using the power of machine learning to help users deliver better search experience. Depending on the index size they can choose more generations to improve quality or end expensive computations sooner and treat results as a starting point for further analysis. Either way it will help. Give it a try!
+[Genetic Ranker](https://github.com/mikolajkania/genetic-ranker){:target="_blank"} is a framework using the power of machine learning to help users deliver better search experience. Depending on the index size they can choose more generations to improve quality or end expensive computations sooner and treat results as a starting point for further analysis. Either way it will help. Give it a try!

@@ -11,7 +11,7 @@ tags:
 - performance guide
 ---
 
-Did you know that, according to Java implementators, [about 25% of memory](https://openjdk.java.net/jeps/192) consumed by large-scale applications are Strings? And what if I tell you that you can decrease this value with a single command?           
+Did you know that, according to Java implementators, [about 25% of memory](https://openjdk.java.net/jeps/192){:target="_blank"} consumed by large-scale applications are Strings? And what if I tell you that you can decrease this value with a single command?           
 
 <!--excerpt-->
 
@@ -74,13 +74,13 @@ System.out.println(alice.equals(bob));  // true
 System.out.println(alice == bob);       // true
 {% endhighlight %} 
 
-It is worth to mention that pool of literal values is not restricted to Strings. Other types in Java also supports this concept but in [a bit different way](https://stackoverflow.com/a/13098161).
+It is worth to mention that pool of literal values is not restricted to Strings. Other types in Java also supports this concept but in [a bit different way](https://stackoverflow.com/a/13098161){:target="_blank"}.
 
 ### So, should we put all strings into a pool?
 
 Now a question may come to your mind: shouldn't you intern all the strings of a (hello) world if it such a efficient idea? As always - it depends. 
 
-Everything has a cost and this is also a case of String pool. JVM has to keep hashed structure containing interned strings and search it. The longer the list, the slower it would be to found given objects due to hash collisions - multiple hash values can be put into one bucket of fixed-size hashtable that holds strings (for more on hashtable look [here, p. 196](http://shop.oreilly.com/product/0636920028499.do), collisions - [here](https://javarevisited.blogspot.com/2016/01/how-does-java-hashmap-or-linkedhahsmap-handles.html)). What's more, if you sorted the strings in your application by number of occurrences, you would see that the biggest advantage of string interning would be at the top of a list. At some point, the gain would be marginal or zero, but those entries still would be kept in a pool. It is a wise idea to put developers in charge and let them decide how big their pool should be - and exactly that can be done with option *-XX:StringTableSize=n*. The default size is 60013 since Java 7u40 and can be checked by using JVM option *-XX:+PrintStringTableStatistics*, for example:
+Everything has a cost and this is also a case of String pool. JVM has to keep hashed structure containing interned strings and search it. The longer the list, the slower it would be to found given objects due to hash collisions - multiple hash values can be put into one bucket of fixed-size hashtable that holds strings (for more on hashtable look [here, p. 196](http://shop.oreilly.com/product/0636920028499.do){:target="_blank"}, collisions - [here](https://javarevisited.blogspot.com/2016/01/how-does-java-hashmap-or-linkedhahsmap-handles.html){:target="_blank"}). What's more, if you sorted the strings in your application by number of occurrences, you would see that the biggest advantage of string interning would be at the top of a list. At some point, the gain would be marginal or zero, but those entries still would be kept in a pool. It is a wise idea to put developers in charge and let them decide how big their pool should be - and exactly that can be done with option *-XX:StringTableSize=n*. The default size is 60013 since Java 7u40 and can be checked by using JVM option *-XX:+PrintStringTableStatistics*, for example:
 
 {% highlight java %}
 StringTable statistics:
@@ -114,7 +114,7 @@ So when to increase the size of the pool? Basically, when you know that you have
 
 ### How it works?
 
-There are situations when you know that duplicates are a real deal in your application and you are running out of memory because of them. Instead of manually interning everything you can use Java's [String deduplication](https://openjdk.java.net/jeps/192) feature of G1 garbage collector, which [became default](http://openjdk.java.net/jeps/248) with Java 9. Let implementators explain their motivations:
+There are situations when you know that duplicates are a real deal in your application and you are running out of memory because of them. Instead of manually interning everything you can use Java's [String deduplication](https://openjdk.java.net/jeps/192){:target="_blank"} feature of G1 garbage collector, which [became default](http://openjdk.java.net/jeps/248){:target="_blank"} with Java 9. Let implementators explain their motivations:
 
 > Many large-scale Java applications are currently bottlenecked on memory. Measurements have shown that roughly 25% of the Java heap live data set in these types of applications is consumed by String objects. Further, roughly half of those String objects are duplicates. Having duplicate String objects on the heap is, essentially, just a waste of memory.
 
@@ -139,7 +139,7 @@ public static void main(String[] args) {
 
 With printing deduplication statistic enabled (*-XX:+UseG1GC -XX:+UseStringDeduplication -XX:+PrintStringDeduplicationStatistics*) I was able to check how string presence can drop. From 100k samples 50133 entries were unique and deduplication was able to cover 33476 strings from whole JVM process. Look nice but results from a real application would be very different.
 
-Disadvantages? It is only directed to applications where repeating strings are a real problem, works only w G1 garbage collector which has one more constantly working process attached to itself (CPU usage) and statistics cannot be printed on newest Java version, OpenJDK 11.0.1, due to error. This is why I used JVM option *-XX:+UseG1GC*, as before Java 9 G1 was not the default garbage collector. Keep also in mind that String deduplication was added in Java version 8u20.
+Disadvantages? It is only directed to applications where repeating strings are a real problem, works only w G1 garbage collector which has one more constantly working process attached to itself (CPU usage) and statistics cannot be printed on newest Java version, OpenJDK 11.0.1, [due to error](https://bugs.openjdk.java.net/browse/JDK-8211821){:target="_blank"}. This is why I used JVM option *-XX:+UseG1GC*, as before Java 9 G1 was not the default garbage collector. Keep also in mind that String deduplication was added in Java version 8u20.
 
 ## Compact Strings
 
@@ -170,14 +170,14 @@ Does this solution has any disadvantages? Not many so far, and this is why it is
 
 ### Use StringBuilder for string concatenation   
 
-As Strings are immutable its concatenation requires creating a new entry after every change, which is not fast enough when there is many such operations or String class methods are involved. Java has an answer for that problem in a form of [class StringBuilder](https://github.com/AdoptOpenJDK/openjdk-jdk11/blob/999dbd4192d0f819cb5224f26e9e7fa75ca6f289/src/java.base/share/classes/java/lang/AbstractStringBuilder.java), not thread safe successor of StringBuffer.  
+As Strings are immutable its concatenation requires creating a new entry after every change, which is not fast enough when there is many such operations or String class methods are involved. Java has an answer for that problem in a form of [class StringBuilder](https://github.com/AdoptOpenJDK/openjdk-jdk11/blob/999dbd4192d0f819cb5224f26e9e7fa75ca6f289/src/java.base/share/classes/java/lang/AbstractStringBuilder.java){:target="_blank"}, not thread safe successor of StringBuffer.  
 
 > Implements a modifiable string. At any point in time it contains some particular sequence of characters, but the length and content of the sequence can be changed through certain method calls.
 
 
-It offers better performance during concatenation; exact comparison can be seen in [this post](http://www.corejavaguru.com/effective-java/items/51). What's more, it helps avoid temporary Strings objects that would be a result of standard concatenation and offers additional methods to work on text.       
+It offers better performance during concatenation; exact comparison can be seen in [this post](http://www.corejavaguru.com/effective-java/items/51){:target="_blank"}. What's more, it helps avoid temporary Strings objects that would be a result of standard concatenation and offers additional methods to work on text.       
 
-But should you always replace string concatenation with StringBuilder? In many situations it is the triumph of form over substance as you are loosing the readability of a code. What's more, compiler can do it for you under the hood when you are - for instance - explicitly adding few strings outside a loop. From [Java Language Specification](https://docs.oracle.com/javase/specs/jls/se11/html/jls-15.html#jls-15.18.1):    
+But should you always replace string concatenation with StringBuilder? In many situations it is the triumph of form over substance as you are loosing the readability of a code. What's more, compiler can do it for you under the hood when you are - for instance - explicitly adding few strings outside a loop. From [Java Language Specification](https://docs.oracle.com/javase/specs/jls/se11/html/jls-15.html#jls-15.18.1){:target="_blank"}:    
 
 > 'To increase the performance of repeated string concatenation, a Java compiler may use the StringBuffer class or a similar technique to reduce the number of intermediate String objects that are created by evaluation of an expression.'     
 

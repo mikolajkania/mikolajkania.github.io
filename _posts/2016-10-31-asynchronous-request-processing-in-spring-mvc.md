@@ -13,7 +13,7 @@ tags:
 - servlet 3.0
 ---
 
-Recently, going through the Spring MVC documentation, I found a feature I haven't previously used - asynchronous request processing. It is an addition of [Servlet 3 API](https://jcp.org/en/jsr/detail?id=315) and a part of Java EE since its sixth edition from 2009; [Spring started support it three years later](https://spring.io/blog/2012/05/07/spring-mvc-3-2-preview-introducing-servlet-3-async-support). As it looks interesting (and as *async* is a popular word in developer's journey since at least early Web 2.0 days) I decided to go deeper into details of it. 
+Recently, going through the Spring MVC documentation, I found a feature I haven't previously used - asynchronous request processing. It is an addition of [Servlet 3 API](https://jcp.org/en/jsr/detail?id=315){:target="_blank"} and a part of Java EE since its sixth edition from 2009; [Spring started support it three years later](https://spring.io/blog/2012/05/07/spring-mvc-3-2-preview-introducing-servlet-3-async-support){:target="_blank"}. As it looks interesting (and as *async* is a popular word in developer's journey since at least early Web 2.0 days) I decided to go deeper into details of it. 
 
 <!--excerpt-->
 
@@ -25,7 +25,7 @@ Imagine a situation when thread has to wait for a external resource, like a data
 <h2>How it works?</h2>
 In the Servlet 3.0 world request can be *left* by its initial container thread with AsyncContext implementation containing all necessary data required to resume execution. The leaving thread is exited but from the client perspective there is the same simple anticipation of a result - it will only be completed by another thread. 
 
-Developer has to provide a *Callable* or *DeferredResult* as a return of MVC Controller and Spring will do the rest. Sounds simple? As always the devil is in the details, but this knowledge should be enough to bootstrap a exemplary project and test the difference between sync and async requests. For more detailed information about a flow, yet rather laconic, I recommend [Spring Docs.](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html#mvc-ann-async)
+Developer has to provide a *Callable* or *DeferredResult* as a return of MVC Controller and Spring will do the rest. Sounds simple? As always the devil is in the details, but this knowledge should be enough to bootstrap a exemplary project and test the difference between sync and async requests. For more detailed information about a flow, yet rather laconic, I recommend [Spring Docs.](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html#mvc-ann-async){:target="_blank"}
 
 
 <h2>The test plan</h2>
@@ -35,11 +35,11 @@ There will be a controller with majority of requests lasting 1 second (80%), lea
 
 A JMeter test plan would include warmup with 100 threads and 25 iterations, the proper test - 1000 threads started over half a minute in 10 iterations. The most important metric would be a throughput, requests per second. I will repeat tests multiple times and choose representative sample.
 
-I will use Jetty 9 and Java 8 64 bit runtime. Jetty will be configured to have at most 100 threads. Server mode for compilation is the [only one supported in 64bit](http://www.oracle.com/technetwork/java/hotspotfaq-138619.html#compiler_types) Java so it would be obviously enabled.
+I will use Jetty 9 and Java 8 64 bit runtime. Jetty will be configured to have at most 100 threads. Server mode for compilation is the [only one supported in 64bit](http://www.oracle.com/technetwork/java/hotspotfaq-138619.html#compiler_types){:target="_blank"} Java so it would be obviously enabled.
 
 
 <h2>The code</h2>
-Although the necessary code is not difficult to write, I will provide a introductory Spring project to help bootstrap everything even faster. You can find it [here](https://github.com/mikolajkania/spring-mvc-startup), it is a Spring MVC app without Spring Boot magic configuration. It will run on Jetty or Tomcat, I used the former.
+Although the necessary code is not difficult to write, I will provide a introductory Spring project to help bootstrap everything even faster. You can find it [here](https://github.com/mikolajkania/spring-mvc-startup){:target="_blank"}, it is a Spring MVC app without Spring Boot magic configuration. It will run on Jetty or Tomcat, I used the former.
 
 First, you need to tell Spring to enable async support for given servlet. Unless you do that, the nasty exception appears at runtime. Add below line to AppInitializer:
 {% highlight java %}

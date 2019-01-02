@@ -51,7 +51,7 @@ On a high level of abstraction it would work as follows: Solr Text Tagger scans 
 
 Let's discuss what is important here: during indexing tokens in *tag* field are **concatenated into final one**, as we need complete match in text. Another thing is that terms of this field are kept in memory in efective structure called Finite State Transducer (FST).
 
-**What is FST?** It is a kind of finite state machine (FSM), that is a graph with nodes (states) & labels (edges). Finite state machine has an input which determines transitions between nodes. FST is an extension of state machine with an output node. In Lucene it is used to map term into integer and is implemented by Michael McCandless, whose [example of a structure](http://blog.mikemccandless.com/2010/12/using-finite-state-transducers-in.html) is quite clear:
+**What is FST?** It is a kind of finite state machine (FSM), that is a graph with nodes (states) & labels (edges). Finite state machine has an input which determines transitions between nodes. FST is an extension of state machine with an output node. In Lucene it is used to map term into integer and is implemented by Michael McCandless, whose [example of a structure](http://blog.mikemccandless.com/2010/12/using-finite-state-transducers-in.html){:target="_blank"} is quite clear:
 ![placeholder](https://raw.githubusercontent.com/mikolajkania/mikolajkania.github.io/master/_images/2017-03-30-fst.png "fst")
 > FST maps the sorted words mop, moth, pop, star, stop and top 
 to their ordinal number (0, 1, 2, ...). As you traverse the 
@@ -140,7 +140,7 @@ Despite the fact that Solr Text Tagger is a working piece of code I decided to f
   </lst>
 </requestHandler>
 {% endhighlight %}
-*Field* says from which field tags should be retieved, *overlaps* - how overlapping entities should be proceed (for example *York* & *New York*). In this case only the longest one will be returned. More detailed information about changes I made to tagger could be found [on Github](https://github.com/mikolajkania/SolrTextTagger/blob/b01f4bb7d385d1cad7a691a138c2aee407925219/src/main/java/org/opensextant/solrtexttagger/TaggerRequestHandler.java).
+*Field* says from which field tags should be retieved, *overlaps* - how overlapping entities should be proceed (for example *York* & *New York*). In this case only the longest one will be returned. More detailed information about changes I made to tagger could be found [on Github](https://github.com/mikolajkania/SolrTextTagger/blob/b01f4bb7d385d1cad7a691a138c2aee407925219/src/main/java/org/opensextant/solrtexttagger/TaggerRequestHandler.java){:target="_blank"}.
 
 <h2>Testing</h2>
 I added article with title *Mario Balotelli Brendan Rodgers will help me realise my potential at Liverpool FC - Liverpool Echo* to Solr. As expected, indexed tag was the one with id 2644210 - Liverpool.

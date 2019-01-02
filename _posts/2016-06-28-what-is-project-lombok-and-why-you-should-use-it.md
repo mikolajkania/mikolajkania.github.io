@@ -10,18 +10,18 @@ tags:
 - java internals
 ---
 
-Java is well known for its necessity to write quite a lot of code to perform simple tasks: all this getter/setter methods [handled nicely by the competitors](https://msdn.microsoft.com/en-us/library/aa287786(v=vs.71).aspx), common [Problem Factories](https://i.imgur.com/y41pi4n.jpg), Calendar & Date or logging jumbo. As more languages with plain syntax arise, staying put with actual aproach seems to be a bit out-of-date. There are even some propositons to [add JavaScript's-like val folding](http://blog.joda.org/2016/03/var-and-val-in-java.html) to change things, but with Oracle's lacking investment it is hard to believe that any changes appear in a finite time. On the other hand Java ecosystem is full of decent libraries that can fill this gap; one of this libraries is Project Lombok.
+Java is well known for its necessity to write quite a lot of code to perform simple tasks: all this getter/setter methods [handled nicely by the competitors](https://msdn.microsoft.com/en-us/library/aa287786(v=vs.71).aspx){:target="_blank"}, common [Problem Factories](https://i.imgur.com/y41pi4n.jpg){:target="_blank"}, Calendar & Date or logging jumbo. As more languages with plain syntax arise, staying put with actual aproach seems to be a bit out-of-date. There are even some propositons to [add JavaScript's-like val folding](http://blog.joda.org/2016/03/var-and-val-in-java.html){:target="_blank"} to change things, but with Oracle's lacking investment it is hard to believe that any changes appear in a finite time. On the other hand Java ecosystem is full of decent libraries that can fill this gap; one of this libraries is Project Lombok.
 
 <!--excerpt-->
 
 <h2>Project Lombok</h2>
-[The Project Lombok's](https://projectlombok.org/) main goal is to reduce boilerplate code in Java. It provides bunch of annotations making classes much more cleaner and is able to generate required code during compilation. But before we immerse ourselves into the project's goodies, let's take a look into how annotations are processed in Java.
+[The Project Lombok's](https://projectlombok.org/){:target="_blank"} main goal is to reduce boilerplate code in Java. It provides bunch of annotations making classes much more cleaner and is able to generate required code during compilation. But before we immerse ourselves into the project's goodies, let's take a look into how annotations are processed in Java.
 
-Lombok uses Pluggable Annotation Processing API which was introduced in Java 6 (2006 - ten years ago!). It allows programmers to write custom annotation processors that are plugged into compiling process. Processor receives a source code's AST ([abstract sytntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree)) which is a tree of nodes representing variables, operators, statements and others language components; imagine it as a Java files's DOM. Having it, processor can analyze, validate or generate new code. Through the years multiple libraries started to use this API, the best known are probably JPA and GWT.
+Lombok uses Pluggable Annotation Processing API which was introduced in Java 6 (2006 - ten years ago!). It allows programmers to write custom annotation processors that are plugged into compiling process. Processor receives a source code's AST ([abstract sytntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree){:target="_blank"}) which is a tree of nodes representing variables, operators, statements and others language components; imagine it as a Java files's DOM. Having it, processor can analyze, validate or generate new code. Through the years multiple libraries started to use this API, the best known are probably JPA and GWT.
 
-It is worth to note that Lombok does more then API allows: it modifies [AST of a class](http://notatube.blogspot.com/2010/11/project-lombok-trick-explained.html). People behind project found an internal API which can be used for this purpose. It goes without saying that this aproach make them vulnerable to future JDK changes, but for now - and for many years - it works.
+It is worth to note that Lombok does more then API allows: it modifies [AST of a class](http://notatube.blogspot.com/2010/11/project-lombok-trick-explained.html){:target="_blank"}. People behind project found an internal API which can be used for this purpose. It goes without saying that this aproach make them vulnerable to future JDK changes, but for now - and for many years - it works.
 
-But let's go back to Lombok. Below I present [three of many available features](https://projectlombok.org/features/index.html) that I instantly put into my project, which of course is only a subset of available functionalities.
+But let's go back to Lombok. Below I present [three of many available features](https://projectlombok.org/features/index.html){:target="_blank"} that I instantly put into my project, which of course is only a subset of available functionalities.
 
 
 <h2>Automatic getter/ setter/ constructor</h2>
@@ -82,7 +82,7 @@ public class Article {
 
 
 <h2>Plugins</h2>
-It is important to note that those features would be useless without a good code complation of modern IDE-s. Fortunately Intellij Idea - which I use and recommend - has the plugin that make finding Lombok-generated methods almost as easy as using standard ones. [Eclipse and Netbeans are also supported](https://projectlombok.org/download.html). Finding usages on a field can point you to a used getter, and when you use an object Idea prompts methods. Example is shown below:
+It is important to note that those features would be useless without a good code complation of modern IDE-s. Fortunately Intellij Idea - which I use and recommend - has the plugin that make finding Lombok-generated methods almost as easy as using standard ones. [Eclipse and Netbeans are also supported](https://projectlombok.org/download.html){:target="_blank"}. Finding usages on a field can point you to a used getter, and when you use an object Idea prompts methods. Example is shown below:
 
 ![placeholder](https://raw.githubusercontent.com/mikolajkania/mikolajkania.github.io/master/_images/2016-06-28-lombok-code-completion.png "Logged http requests")
 
