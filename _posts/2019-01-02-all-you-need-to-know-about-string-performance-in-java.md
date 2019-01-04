@@ -2,13 +2,13 @@
 layout: post
 title: All you need to know about String performance in Java in 2019  
 tags:  
-- performance
 - java
+- performance
 - string performance
+- memory
 - java performance
-- compact strings
-- strings deduplication
 - performance guide
+
 ---
 
 Did you know that, according to Java implementators, [about 25% of memory](https://openjdk.java.net/jeps/192){:target="_blank"} consumed by large-scale applications are Strings? And what if I tell you that you can decrease this value with a single command?           
