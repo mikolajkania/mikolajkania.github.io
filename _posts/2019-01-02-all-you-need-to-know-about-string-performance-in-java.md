@@ -19,7 +19,7 @@ Did you know that, according to Java implementators, [about 25% of memory](https
 
 ### Strings are immutable objects
 
-The heart of String object is array which stores its content. String is wrapping it and prevents from changing, offering multiple methods returning new strings as a result of computation.   
+The heart of String object is array which stores its content. String is wrapping it and prevents from changing, offering multiple methods that returning new String as a result of computation.   
 
 {% highlight java %}
 /** Before Java 9 */
@@ -80,7 +80,11 @@ It is worth to mention that pool of literal values is not restricted to Strings.
 
 Now a question may come to your mind: shouldn't you intern all the strings of a (hello) world if it such a efficient idea? As always - it depends. 
 
-Everything has a cost and this is also a case of String pool. One thing is that [calling intern method has a cost](http://java-performance.info/string-intern-in-java-6-7-8/){:target="_blank"} and it would be unwise to do it unnecessarily. Whats more, JVM has to keep hashed structure containing interned strings and search it. The longer the list, the slower it would be to found given objects due to hash collisions - multiple hash values can be put into one bucket of fixed-size hashtable that holds strings (for more on hashtable look [here, p. 196](http://shop.oreilly.com/product/0636920028499.do){:target="_blank"}, check collisions before interview, i.e. [here](https://javarevisited.blogspot.com/2016/01/how-does-java-hashmap-or-linkedhahsmap-handles.html){:target="_blank"}). What's more, if you sorted the strings in your application by number of occurrences, you would see that the biggest advantage of string interning would be at the top of a list. At some point, the gain would be marginal or zero, but those entries still would be kept in a pool. It is a wise idea to put developers in charge and let them decide how big their pool should be - and exactly that can be done with option *-XX:StringTableSize=n*. The default size is 60013 since Java 7u40 and can be checked by using JVM option *-XX:+PrintStringTableStatistics*, for example:
+Everything has a cost and this is also a case of String pool. 
+
+One thing is that calling intern method [has an execution cost](http://java-performance.info/string-intern-in-java-6-7-8/){:target="_blank"} and it would be unwise to do it unnecessarily. 
+
+The second this is the JVM has to keep hashed structure containing interned strings and search it. The longer the list, the slower it would be to found given objects due to hash collisions - multiple hash values can be put into one bucket of fixed-size hashtable that holds strings (for more on hashtable look [here, p. 196](http://shop.oreilly.com/product/0636920028499.do){:target="_blank"}, check collisions before job interview, i.e. [here](https://javarevisited.blogspot.com/2016/01/how-does-java-hashmap-or-linkedhahsmap-handles.html){:target="_blank"}). What's more, if you sorted the strings in your application by number of occurrences, you would see that the biggest advantage of string interning would be at the top of a list. At some point, the gain would be marginal or zero, but those entries still would be kept in a pool. It is a wise idea to put developers in charge and let them decide how big their pool should be - and exactly that can be done with option *-XX:StringTableSize=n*. The default size is 60013 since Java 7u40 and can be checked by using JVM option *-XX:+PrintStringTableStatistics*, for example:
 
 {% highlight java %}
 StringTable statistics:
@@ -108,7 +112,7 @@ Std. dev. of bucket size:     0.935
 Maximum bucket size     :         5
 {% endhighlight %} 
 
-So when to increase the size of the pool? Basically, when you know that you have many duplicated strings, but also time & performance tests to check the impact before going to production. The second part is in a notebook of every performance engineer, of course.
+Manual interning may not be a bad idea, though. It can be useful when you have many dictionaries of values that will be always heavily used in application. But I believe it is a way when your application is already pushed to the limits and narrow enough to supply those dictionaries. 
 
 ## String deduplication
 
@@ -122,9 +126,9 @@ Technically, how is deduplication performed?
 
 > When garbage collection is performed, live objects on the heap are visited. For each object we visit a check is applied to see if the object is a candidate for string deduplication. If the check indicates that this is a candidate then a reference to the object is inserted into a queue for later processing. A deduplication thread runs in the background and processes the queue.
 
-It is worth to mention that not all strings will be candidates for deduplication. As the [JEP states](http://openjdk.java.net/jeps/248){:target="_blank"}, there is command-line option that can manage it (*StringDeduplicationAgeThreshold*) and its default value is 3 - candidates reaching this age will be taken into consideration. It may be important for those who want it to have immediate impact. On the other hand it can be a performance advantage - String interning has it cost and the same is with deduplication - not taking into account all objects can make process of deduplication less painful for garbage collector/CPU. But as in many situations in Java developers are in charge and can set it to other value.  
+It is worth to mention that not all strings will be candidates for deduplication. As [the JEP states](http://openjdk.java.net/jeps/192){:target="_blank"}, there is command-line option that can manage it (*StringDeduplicationAgeThreshold*) and its default value is 3 - candidates reaching this age will be taken into consideration. It may be important for those who want it to have immediate impact. On the other hand it can be a performance advantage - String interning has it cost and the same is with deduplication - not taking into account all objects can make process of deduplication less painful for garbage collector/CPU. But as in many situations in Java developers are in charge and can set it to other value.  
 
-### How string deduplication performs?
+### How String Deduplication performs?
 
 So how it performs? I've wrote a program that creates strings and adds them to list to prevent garbage collection. I also wanted strings to be not equal in terms of occurrences to make example less 'labolatory'.
 
@@ -139,9 +143,9 @@ public static void main(String[] args) {
 }
 {% endhighlight %} 
 
-With printing deduplication statistic enabled (*-XX:+UseG1GC -XX:+UseStringDeduplication -XX:+PrintStringDeduplicationStatistics*) I was able to check how string presence can drop. From 100k samples 50133 entries were unique and deduplication was able to cover 33476 strings from whole JVM process. Look nice but results from a real application would be very different.
+With printing deduplication statistic enabled (*-XX:+UseG1GC -XX:+UseStringDeduplication -XX:+PrintStringDeduplicationStatistics*) I was able to check how string presence can drop. From 100k samples 50133 entries were unique and deduplication was able to cover 33476 strings from whole JVM process. Look nice but keep in mind that results from a real application would be very different.
 
-Disadvantages? It is only directed to applications where repeating strings are a real problem, works only w G1 garbage collector which has one more constantly working process attached to itself (CPU usage) and statistics cannot be printed on newest Java version, OpenJDK 11.0.1, [due to error](https://bugs.openjdk.java.net/browse/JDK-8211821){:target="_blank"}. This is why I used JVM option *-XX:+UseG1GC*, as before Java 9 G1 was not the default garbage collector. Keep also in mind that String deduplication was added in Java version 8u20.
+Disadvantages? It is only directed to applications where repeating strings are a real problem, works only with G1 garbage collector which has one more constantly working process attached to itself (CPU usage) and statistics cannot be printed on newest Java version, OpenJDK 11.0.1, [due to error](https://bugs.openjdk.java.net/browse/JDK-8211821){:target="_blank"}. This is why I used JVM option *-XX:+UseG1GC* for Java 8, as before Java 9 G1 was not the default garbage collector. Keep also in mind that String deduplication was added in Java version 8u20.
 
 ## Compact Strings
 
@@ -151,9 +155,9 @@ Before Java 9 String's internal shape was rather simple: characters were stored 
 
 Compact Strings are enabled by default. You can turn them off, but not entirely - inside the String there still will be byte array, but Java will not be using the shorter representation. The downside of this approach is that almost every method in String became less readable internally, with condition like in hashcode method at the top of the post.
 
-### How compact strings performs?
+### How Compact Strings performs?
 
-I've decided to test this solution with program written for String deduplication. In the first test I've used enabled by default Compact Strings. In the second - I've disabled them with JVM option *-XX:-CompactStrings*.
+I've decided to test this solution with program written for String deduplication. In the first test I've used enabled by default Compact Strings. In the second - I've disabled them with JVM option *-XX:-CompactStrings*. Garbage collector was called before every measurement. 
 
 |                       | Compact Strings Enabled  |  Compact Strings Disabled | Compact Strings + Deduplication |
 |-----------------------|:------------------------:|:-------------------------:| :------------------------------:|
