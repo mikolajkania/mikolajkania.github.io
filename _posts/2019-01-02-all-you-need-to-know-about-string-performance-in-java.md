@@ -188,6 +188,36 @@ But should you always replace string concatenation with StringBuilder? In many s
 
 The most important message from this section is that StringBuilder should be used always when many concatenations are performed, for example in a loop.
 
+### Avoid creating too many strings 
+
+It is very general rule and related to StringBuilder case, but I would like to illustrate it with small performance tip. When you are logging message, mostly on lower levels which can occur often, there is a temptation write something like that:
+
+{% highlight java %}
+log.debug("[Cached] User id=" + getUserId() + ", date=" + new Date());
+{% endhighlight %} 
+
+It will be fine in small to medium applications, but if you considered big ones and parts of code that are called all the time it may be an issue. Why? Because even is logging level would be higher (INFO, WARN etc.) the String would be created and saved in memory before evaluating that. There may be some computation cost, but I mostly think about memory here. The proper solution is:
+
+{% highlight java %}
+if (log.isDebugEnabled()) {
+    log.debug("[Cached] User id=" + getUserId() + ", date=" + new Date());
+}
+{% endhighlight %}
+
+It can be even prettier with lambdas:
+
+{% highlight java %}
+log.debug("Some long-running operation returned {}", () -> "[Cached] User id=" + getUserId() + ", date=" + new Date());
+{% endhighlight %}
+
+Now, there is no need to construct a String. It may not be the first thing to blame during performance research, but shows that you can easily write better code with minor changes.
+
+Of course this post could be much longer and cover even more cases - but I wanted to extract those I see as most interesting and easy to adopt - even if the technology behind it is advanced. In the most cases, before you start troubling yourself with finesse code-level optimizations, you should use approaches that can provide immediate result - and buy you some time for better problem tackling. Don't get me wrong - the more you know, the better, always. But as [Donald Knuth said](https://en.wikiquote.org/wiki/Donald_Knuth){:target="_blank"}:
+
+> We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%
+
+Yes, I know that someone may call my logging example as a root of all evil ;-)
+
 ## Conclusion
 
 Even if String performance does not look like a hot topic for performance engineer, it is better to know how they works and why. I hope this guide will be helpful for everyone, especially those who can't sleep because of OutOfMemory exceptions.
