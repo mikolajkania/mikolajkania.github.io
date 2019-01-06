@@ -122,6 +122,8 @@ Technically, how is deduplication performed?
 
 > When garbage collection is performed, live objects on the heap are visited. For each object we visit a check is applied to see if the object is a candidate for string deduplication. If the check indicates that this is a candidate then a reference to the object is inserted into a queue for later processing. A deduplication thread runs in the background and processes the queue.
 
+It is worth to mention that not all strings will be candidates for deduplication. As the [JEP states](http://openjdk.java.net/jeps/248), there is command-line option that can manage it (*StringDeduplicationAgeThreshold*) and its default value is 3 - candidates reaching this age will be taken into consideration. It may be important for those who want it to have immediate impact. On the other hand it can be a performance advantage - String interning has it cost and the same is with deduplication - not taking into account all objects can make process of deduplication less painful for garbage collector/CPU. But as in many situations in Java developers are in charge and can set it to other value.  
+
 ### How string deduplication performs?
 
 So how it performs? I've wrote a program that creates strings and adds them to list to prevent garbage collection. I also wanted strings to be not equal in terms of occurrences to make example less 'labolatory'.
@@ -173,7 +175,6 @@ Does this solution has any disadvantages? Not many so far, and this is why it is
 As Strings are immutable its concatenation requires creating a new entry after every change, which is not fast enough when there is many such operations or String class methods are involved. Java has an answer for that problem in a form of [class StringBuilder](https://github.com/AdoptOpenJDK/openjdk-jdk11/blob/999dbd4192d0f819cb5224f26e9e7fa75ca6f289/src/java.base/share/classes/java/lang/AbstractStringBuilder.java){:target="_blank"}, not thread safe successor of StringBuffer.  
 
 > Implements a modifiable string. At any point in time it contains some particular sequence of characters, but the length and content of the sequence can be changed through certain method calls.
-
 
 It offers better performance during concatenation; exact comparison can be seen in [this post](http://www.corejavaguru.com/effective-java/items/51){:target="_blank"}. What's more, it helps avoid temporary Strings objects that would be a result of standard concatenation and offers additional methods to work on text.       
 
