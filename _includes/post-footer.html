@@ -1,9 +1,11 @@
-<a href="http://itblues.pl/" class="post-footer-link">Home</a> <a href="{{ site.linkedin }}" target="_blank" class="post-footer-link">Linkedin</a> <a href="{{ site.twitter }}" target="_blank" class="post-footer-link">Twitter</a> <a href="{{ site.github.repo }}" target="_blank" class="post-footer-link">Github</a> <a href="{{ site.medium }}" target="_blank" class="post-footer-link">Medium</a> <a href="{{ site.rss }}" target="_blank" class="post-footer-link">RSS</a>
-{% assign pages_list = site.pages %}
-{% for node in pages_list %}
-	{% if node.title != null %}
-		{% if node.layout == "page" %}
-			<a href="{{ node.url }}" class="post-footer-link">{{ node.title }}</a>
-		{% endif %}
-	{% endif %}
-{% endfor %}
+<div class="post-footer">
+    <a href="http://itblues.pl/" class="post-footer-link">Home</a> <a href="{{ site.linkedin }}" target="_blank" class="post-footer-link">Linkedin</a> <a href="{{ site.twitter }}" target="_blank" class="post-footer-link">Twitter</a> <a href="{{ site.github.repo }}" target="_blank" class="post-footer-link">Github</a> <a href="{{ site.medium }}" target="_blank" class="post-footer-link">Medium</a> <a href="{{ site.rss }}" target="_blank" class="post-footer-link">RSS</a>
+    {% assign pages_list = site.pages %}
+    {% for node in pages_list %}
+        {% if node.title != null %}
+            {% if node.layout == "page" %}
+                <a href="{{ node.url }}" class="post-footer-link">{{ node.title }}</a>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</div>
