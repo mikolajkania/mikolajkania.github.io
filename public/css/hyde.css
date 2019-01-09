@@ -230,6 +230,7 @@ a.sidebar-nav-item:focus {
   padding: 5px;
 }
 
+/* todo stopped working */
 #archives :target:before {
   content: "";
   display: block;
