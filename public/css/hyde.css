@@ -230,7 +230,7 @@ a.sidebar-nav-item:focus {
   padding: 5px;
 }
 
-/* todo stopped working */
+/* works in chrome, not in ff */
 #archives :target:before {
   content: "";
   display: block;
