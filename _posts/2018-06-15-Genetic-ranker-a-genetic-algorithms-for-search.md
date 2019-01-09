@@ -2,14 +2,12 @@
 layout: post
 title: Genetic Ranker - genetic algorithms for search 
 tags:  
-- genetic ranker
 - genetic algorithms
+- search quality
 - search
 - python
 - github
 - open source
-- search quality
-
 ---
 
 Working as a search engineer myself I decided to [develop a framework](https://github.com/mikolajkania/genetic-ranker){:target="_blank"} for finding optimal query weights for search engines like Elasticsearch or Solr. It is based on a machine learning branch called genetic programming, inspired by the process of natural selection. In this post I'll describe it and briefly discuss how the good process of building the quality of search should look like. Let's start!

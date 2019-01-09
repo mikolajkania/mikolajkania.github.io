@@ -4,7 +4,7 @@ title: Compression modes in Solr 5.5
 tags:
 - solr
 - compression
-- index
+- indexing
 - codec
 ---
 

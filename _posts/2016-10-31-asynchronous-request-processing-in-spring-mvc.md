@@ -3,14 +3,12 @@ layout: post
 title: Is asynchronous request processing worth your time?
 tags:
 - java
-- asynchronous request processing
 - asynchronous
 - spring
 - spring mvc
 - jmeter
 - performance
 - jetty
-- servlet 3.0
 ---
 
 Recently, going through the Spring MVC documentation, I found a feature I haven't previously used - asynchronous request processing. It is an addition of [Servlet 3 API](https://jcp.org/en/jsr/detail?id=315){:target="_blank"} and a part of Java EE since its sixth edition from 2009; [Spring started support it three years later](https://spring.io/blog/2012/05/07/spring-mvc-3-2-preview-introducing-servlet-3-async-support){:target="_blank"}. As it looks interesting (and as *async* is a popular word in developer's journey since at least early Web 2.0 days) I decided to go deeper into details of it. 

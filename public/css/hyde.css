@@ -229,6 +229,14 @@ a.sidebar-nav-item:focus {
 #archives {
   padding: 5px;
 }
+
+#archives :target:before {
+  content: "";
+  display: block;
+  height: 3rem;
+  margin: -3rem 0 0;
+}
+
 .archive-group {
   margin: 5px;
   border-top: 1px solid #ddd;
@@ -236,6 +244,14 @@ a.sidebar-nav-item:focus {
 }
 .archive-item {
   margin-left: 5px;
+  font-size:1rem;
+}
+.archive-item-title {
+  color: #333333;
+  font-size:1rem;
+}
+.archive-item-content {
+  font-size:0.85rem;
 }
 .post-tags {
   text-align: right;

@@ -2,10 +2,8 @@
 layout: post
 title: What is Project Lombok and why you should use it?
 tags:
-- project lombok
 - lombok
 - java
-- library
 - clean code
 - java internals
 ---

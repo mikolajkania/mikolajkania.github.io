@@ -5,9 +5,10 @@ tags:
 - java
 - performance
 - string performance
-- memory
 - java performance
+- memory
 - performance guide
+- java internals
 
 ---
 

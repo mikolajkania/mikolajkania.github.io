@@ -7,7 +7,6 @@ tags:
 - java
 - jflex
 - tokenization
-- standard tokenizer
 - payloads
 
 ---

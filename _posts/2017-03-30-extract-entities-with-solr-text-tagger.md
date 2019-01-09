@@ -3,22 +3,20 @@ layout: post
 title: Extract entities from document with Solr Text Tagger
 tags:
 - solr
-- entity extraction
-- concept extraction
+- entity recognition
 - solr text tagger
 - fst
 - finite state transducer
 - indexing
 - update request processor
 - java
-- curl
 ---
-Algorithms for extracting entities from text are ones of the most crucial aspects of text analysis. They lead to better understanding of the content, enable additional operations like filtering or grouping and - most importantly - allow to process data automatically. In the [previous post](http://itblues.pl/2017/02/19/how-to-add-data-to-solr-during-indexing/) I announced combination of text indexing & such extraction and in order to keep my promise I created a [fork](https://github.com/mikolajkania/SolrTextTagger) of [Solr Text Tagger](https://github.com/OpenSextant/SolrTextTagger).
+Algorithms for recognizing entities from text are ones of the most crucial aspects of text analysis. They lead to better understanding of the content, enable additional operations like filtering or grouping and - most importantly - allow to process data automatically. In the [previous post](http://itblues.pl/2017/02/19/how-to-add-data-to-solr-during-indexing/) I announced combination of text indexing & such extraction and in order to keep my promise I created a [fork](https://github.com/mikolajkania/SolrTextTagger) of [Solr Text Tagger](https://github.com/OpenSextant/SolrTextTagger).
 
 <!--excerpt-->
 
 <h2>The goal</h2>
-To demonstrate entity extraction I will track down cities names in the indexed documents and then add their idies into documents. Then operations like faceting or filtering could go in a standard Solr way. 
+To demonstrate entity recognition I will track down cities names in the indexed documents and then add their idies into documents. Then operations like faceting or filtering could go in a standard Solr way. 
 
 I will also show that cities might be found in a query, with their offsets. This can be used to change initial text to enable proximity search or query another set of fields.
 
@@ -60,7 +58,7 @@ on the o, so its output ordinal is 4.
 
 **These mapping reduces memory usage, but increases CPU cost** of lookups. As the memory is main problem with Solr/ Lucene, it's a cost we can afford. 
 
-The last question to answer in this section is **how the extraction algorithm works** with this FST representation. Let's say we are quering a phrase *new york times* - there is a hit for *new* as there are multiple city names starting that way. Then the second token in taken into consideration, and still there is a hit in directory (*new york*), but *york* alone is also marked as a takeoff for a new entity. The next steps would be checking *new york times* and *york times*, which in both cases mean end of lookup. *Times* is also a dead end, so we finish with entities *york* & *new york* unless overlapping is enabled. The path for such result is as follow:
+The last question to answer in this section is **how the recognition algorithm works** with this FST representation. Let's say we are quering a phrase *new york times* - there is a hit for *new* as there are multiple city names starting that way. Then the second token in taken into consideration, and still there is a hit in directory (*new york*), but *york* alone is also marked as a takeoff for a new entity. The next steps would be checking *new york times* and *york times*, which in both cases mean end of lookup. *Times* is also a dead end, so we finish with entities *york* & *new york* unless overlapping is enabled. The path for such result is as follow:
 {% highlight text %}new
 new york
 york
@@ -69,7 +67,7 @@ york times
 times{% endhighlight %}
 
 <h2>Indexing content</h2>
-Before we will start tagging indexing part should be set up. For the needs of that I wrote my own update Solr client: *ProcessorAwareConcurrentUpdateSolrClient*. I wanted to be able to pass *update.chain* parameter which decides which update processor will be used. For cities I need a default one, for articles (my source documents) it has to use my entity extraction processor.
+Before we will start tagging indexing part should be set up. For the needs of that I wrote my own update Solr client: *ProcessorAwareConcurrentUpdateSolrClient*. I wanted to be able to pass *update.chain* parameter which decides which update processor will be used. For cities I need a default one, for articles (my source documents) it has to use my entity recognition processor.
 {% highlight java %}
 public UpdateResponse add(String collection, Collection<SolrInputDocument> docs, int commitWithinMs, String processor) throws SolrServerException, IOException {
 	UpdateRequest req = new UpdateRequest();
@@ -167,4 +165,4 @@ It also worked as expected. I'd suggest paying attention to offsets returned by 
 I run more queries and didn't encounter any problems with Solr Text Tagger - the only difficulties are results of data. I preprocessed them a bit - filtered out cities with population less then 100k to avoid entries like *Merkel* - but more should be done. For example if in title appears word *liga* (*league* in Polish) it would be recognized as Latvian *Riga* (as it is one of foreign names of this city). Cities names should be adjusted to language of a document or search and only a subset of them used - but this & other improvements are out of scope of this post.
 
 <h2>Summary</h2>
-In this post I proved that - with minor modifications - Solr Text Tagger can be used to extract entities from texts of the documents being indexed. They can be a subject of further processing, like addition to a document field or modification of user query. Another approach could be using their offsets to add payloads to texts, and then boost documents - but it may be a topic for another post. 
+In this post I proved that - with minor modifications - Solr Text Tagger can be used to recognize entities from texts of the documents being indexed. They can be a subject of further processing, like addition to a document field or modification of user query. Another approach could be using their offsets to add payloads to texts, and then boost documents - but it may be a topic for another post. 
