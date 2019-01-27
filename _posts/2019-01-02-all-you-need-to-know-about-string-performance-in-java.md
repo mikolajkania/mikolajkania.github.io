@@ -20,7 +20,7 @@ Did you know that, according to Java implementators, [about 25% of memory](https
 
 ### Strings are immutable objects
 
-The heart of String object is array which stores its content. String is wrapping it and prevents from changing, offering multiple methods that returning new String as a result of computation.   
+The heart of String object is an array which stores its content. String is wrapping it and prevents from changing, offering multiple methods that returning new String as a result of computation.   
 
 {% highlight java %}
 /** Before Java 9 */
@@ -29,7 +29,7 @@ private final char value[];
 private final byte[] value;
 {% endhighlight %}
 
-Why are Strings immutable? Security and thread-safety are the good answers, but in terms of performance we will be mostly interested in objects caching, implemented via **String pool**. Technically, it is a memory space located now on a Java heap. When you creates a new string variable with value already existing in the pool, JVM doesn't have to create another entry, and reference to existing object would be returned. It helps to reduce memory consumption of Java programs as Strings are very common objects in any application.  
+Why are Strings immutable? Security and thread-safety are the good answers, but in terms of performance we will be mostly interested in objects caching, implemented via **String pool**. Technically, it is a memory space located now on a Java heap. When you create a new string variable with value already existing in the pool, JVM doesn't have to create another entry, and reference to existing object would be returned. It helps to reduce memory consumption of Java programs as Strings are very common objects in any application.  
 
 Immutability and caching are also helpful when computing String's hash, as it can be saved after the first call to hashcode() method. It gives performance boost when using structures like HashMaps, where hashes are required to determine to which bucket object should be put. 
 
@@ -85,7 +85,7 @@ Everything has a cost and this is also a case of String pool.
 
 One thing is that calling intern method [has an execution cost](http://java-performance.info/string-intern-in-java-6-7-8/){:target="_blank"} and it would be unwise to do it unnecessarily. 
 
-The second this is the JVM has to keep hashed structure containing interned strings and search it. The longer the list, the slower it would be to found given objects due to hash collisions - multiple hash values can be put into one bucket of fixed-size hashtable that holds strings (for more on hashtable look [here, p. 196](http://shop.oreilly.com/product/0636920028499.do){:target="_blank"}, check collisions before job interview, i.e. [here](https://javarevisited.blogspot.com/2016/01/how-does-java-hashmap-or-linkedhahsmap-handles.html){:target="_blank"}). What's more, if you sorted the strings in your application by number of occurrences, you would see that the biggest advantage of string interning would be at the top of a list. At some point, the gain would be marginal or zero, but those entries still would be kept in a pool. It is a wise idea to put developers in charge and let them decide how big their pool should be - and exactly that can be done with option *-XX:StringTableSize=n*. The default size is 60013 since Java 7u40 and can be checked by using JVM option *-XX:+PrintStringTableStatistics*, for example:
+The second is that JVM has to keep hashed structure containing interned strings and search it. The longer the list, the slower it would be to found given objects due to hash collisions - multiple hash values can be put into one bucket of fixed-size hashtable that holds strings (for more on hashtable look [here, p. 196](http://shop.oreilly.com/product/0636920028499.do){:target="_blank"}, check collisions before job interview, i.e. [here](https://javarevisited.blogspot.com/2016/01/how-does-java-hashmap-or-linkedhahsmap-handles.html){:target="_blank"}). What's more, if you sorted the strings in your application by number of occurrences, you would see that the biggest advantage of string interning would be at the top of a list. At some point, the gain would be marginal or zero, but those entries still would be kept in a pool. It is a wise idea to put developers in charge and let them decide how big their pool should be - and exactly that can be done with option *-XX:StringTableSize=n*. The default size is 60013 since Java 7u40 and can be checked by using JVM option *-XX:+PrintStringTableStatistics*, for example:
 
 {% highlight java %}
 StringTable statistics:
@@ -127,7 +127,7 @@ Technically, how is deduplication performed?
 
 > When garbage collection is performed, live objects on the heap are visited. For each object we visit a check is applied to see if the object is a candidate for string deduplication. If the check indicates that this is a candidate then a reference to the object is inserted into a queue for later processing. A deduplication thread runs in the background and processes the queue.
 
-It is worth to mention that not all strings will be candidates for deduplication. As [the JEP states](http://openjdk.java.net/jeps/192){:target="_blank"}, there is command-line option that can manage it (*StringDeduplicationAgeThreshold*) and its default value is 3 - candidates reaching this age will be taken into consideration. It may be important for those who want it to have immediate impact. On the other hand it can be a performance advantage - String interning has it cost and the same is with deduplication - not taking into account all objects can make process of deduplication less painful for garbage collector/CPU. But as in many situations in Java developers are in charge and can set it to other value.  
+It is worth to mention that not all strings will be candidates for deduplication. As [the JEP states](http://openjdk.java.net/jeps/192){:target="_blank"}, there is command-line option that can manage it (*StringDeduplicationAgeThreshold*) and its default value is 3 - candidates reaching this GC age will be taken into consideration. It may be important for those who want it to have immediate impact. On the other hand it can be a performance advantage - String interning has it cost and the same is with deduplication - not taking into account all objects can make process of deduplication less painful for garbage collector/CPU. But as in many situations in Java developers are in charge and can set it to other value.  
 
 ### How String Deduplication performs?
 
@@ -221,4 +221,4 @@ Yes, I know that someone may call my logging example as a root of all evil ;-)
 
 ## Conclusion
 
-Even if String performance does not look like a hot topic for performance engineer, it is better to know how they works and why. I hope this guide will be helpful for everyone, especially those who can't sleep because of OutOfMemory exceptions.
+Even if String performance does not look like a hot topic for performance engineer, it is better to know how they works and why. I hope this guide will be helpful for everyone, especially those who can't sleep because of the OutOfMemory exceptions.
