@@ -1,6 +1,6 @@
 ---
 layout: post
-title: All you need to know about String performance in Java in 2019  
+title: All you need to know about String memory performance in Java in 2019  
 tags:  
 - java
 - performance
