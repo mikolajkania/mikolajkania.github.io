@@ -3,12 +3,8 @@ layout: page
 title: About
 ---
 
-<p class="message">
-  A mind is like a parachute. It doesn't work if it is not open. ~ Frank Zappa
-</p>
+Hi, my name is Mikołaj Kania, software developer & team leader from Gdańsk, Poland. 
 
-I believe that sharing knowledge helps both writer & reader. It is also my contribution to the programming community. 
+I have experience working with server-side Java, search engines, JavaScript and recently I switched to Python & machine learning.
 
-I am Mikołaj Kania, software developer & team leader living in Gdańsk, Poland. If you are interested in projects I do, conntact me via any social link I put on this page. 
-
-I hope you will enjoy my blog. Cheers!
+This blog is my contribution to the software community, I hope you enjoy it.
