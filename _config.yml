@@ -29,4 +29,4 @@ excerpt_separator: <!--excerpt-->
 github:
   repo:           https://github.com/mikolajkania
 
-gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
