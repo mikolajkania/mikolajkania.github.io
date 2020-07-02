@@ -6,14 +6,14 @@ highlighter:      rouge
 permalink:        pretty
 
 # Setup
-title:            itblues.pl
-tagline:          'Software engineering by Mikołaj Kania'
+title:            Software engineering blog by Mikołaj Kania
+# tagline:          'Software engineering by Mikołaj Kania'
 description:      '<a href="https://pl.linkedin.com/in/mikolajkania" target="_blank">Mikołaj Kania</a> <br/> I blog about software engineering, search engines, machine learning. '
 linkedin:		  http://www.linkedin.com/in/mikolajkania/
 twitter:		  https://twitter.com/MikolajKania
 medium:           https://medium.com/@mikolajkania
-url:              itblues.pl
-rss:              http://itblues.pl/atom.xml
+url:              mikolajkania.com
+rss:              http://mikolajkania.com/atom.xml
 
 author:
   name:           'Mikołaj Kania'

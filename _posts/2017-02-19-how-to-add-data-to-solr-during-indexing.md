@@ -40,7 +40,7 @@ public final class SolrField {
 	public static final String TITLE = "title_t";
 }
 {% endhighlight %}
-<em>*The annotations you see come from Lombok Project which [I previously described](http://itblues.pl/2016/06/28/what-is-project-lombok-and-why-you-should-use-it/){:target="_blank"}.</em>
+<em>*The annotations you see come from Lombok Project which [I previously described](http://mikolajkania.com/2016/06/28/what-is-project-lombok-and-why-you-should-use-it/){:target="_blank"}.</em>
 
 Update request processors are being created through factories. It is advisable to use default ones and extend the chain with custom processor. When a chain is created it should be registered for updates:
 {% highlight xml %}
@@ -61,7 +61,7 @@ Update request processors are being created through factories. It is advisable t
 </initParams>
 
 {% endhighlight %}
-As you may noticed I used a custom path for my processor. It may be worth to mention that if you want to add your code to Solr you have to create a plugin, which would be loaded by class loader at [Solr startup](http://itblues.pl/2016/01/10/solr-startup-script-windows/){:target="_blank"}. There are multiple ways to do that, but the one I prefer is to create lib directory under SOLR_HOME.
+As you may noticed I used a custom path for my processor. It may be worth to mention that if you want to add your code to Solr you have to create a plugin, which would be loaded by class loader at [Solr startup](http://mikolajkania.com/2016/01/10/solr-startup-script-windows/){:target="_blank"}. There are multiple ways to do that, but the one I prefer is to create lib directory under SOLR_HOME.
 
 The factory itself do nothing more but creates a processor:
 {% highlight java %}
@@ -111,4 +111,4 @@ Voila! Nothing more have to be done. If you index a new document it will go thro
 
 Let's me explain now how is this connected to updating document based on data already existing in the index. Imagine that you have collection previously filled with information: dictionary values or important concepts. During document indexing you can use this data to perform operations on submitted fields, for example to replace dictionary IDs with its names or to retrieve concepts and index them in another field. You can call service that takes URL from text and replace it with name and link. The possibilities are endless, but that operations could not be trival to perform, of course.
 
-In the [next post](http://itblues.pl/2017/03/30/extract-entities-with-solr-text-tagger/) I would show more advanced use case for using processor - extracting entities from document content. Stay tuned!
+In the [next post](http://mikolajkania.com/2017/03/30/extract-entities-with-solr-text-tagger/) I would show more advanced use case for using processor - extracting entities from document content. Stay tuned!

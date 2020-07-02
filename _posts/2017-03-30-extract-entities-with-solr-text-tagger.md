@@ -11,7 +11,7 @@ tags:
 - update request processor
 - java
 ---
-Algorithms for recognizing entities from text are ones of the most crucial aspects of text analysis. They lead to better understanding of the content, enable additional operations like filtering or grouping and - most importantly - allow to process data automatically. In the [previous post](http://itblues.pl/2017/02/19/how-to-add-data-to-solr-during-indexing/) I announced combination of text indexing & such extraction and in order to keep my promise I created a [fork](https://github.com/mikolajkania/SolrTextTagger) of [Solr Text Tagger](https://github.com/OpenSextant/SolrTextTagger).
+Algorithms for recognizing entities from text are ones of the most crucial aspects of text analysis. They lead to better understanding of the content, enable additional operations like filtering or grouping and - most importantly - allow to process data automatically. In the [previous post](http://mikolajkania.com/2017/02/19/how-to-add-data-to-solr-during-indexing/) I announced combination of text indexing & such extraction and in order to keep my promise I created a [fork](https://github.com/mikolajkania/SolrTextTagger) of [Solr Text Tagger](https://github.com/OpenSextant/SolrTextTagger).
 
 <!--excerpt-->
 
@@ -90,7 +90,7 @@ public UpdateResponse add(String collection, Collection<SolrInputDocument> docs,
  <processor class="solr.RunUpdateProcessorFactory" />
 </updateRequestProcessorChain>
 {% endhighlight %}
-For more information about that process I would again point you to my [previous post](http://itblues.pl/2017/02/19/how-to-add-data-to-solr-during-indexing/).
+For more information about that process I would again point you to my [previous post](http://mikolajkania.com/2017/02/19/how-to-add-data-to-solr-during-indexing/).
 
 Processor I wrote retrieves one of the document fields and pass it to handler responsible for text tagging. Returned cities ids are added as a new field to the document. 
 {% highlight java %}

@@ -31,7 +31,7 @@ What JIT can do to make code faster? It can cache variables values, eliminate no
 
 Side note - this is why you should always 'warm' your code before making test performance testing, especially when being interested in smaller execution times. Otherwise your code can give different results at the start of test suite, comparing to the end, for the same operations!
 
-If you are into JVM internals you should look into my post about [Annotation Processing API in Java](http://itblues.pl/2016/06/28/what-is-project-lombok-and-why-you-should-use-it/){:target="_blank"}. Jabel is using similar path to provide its features.
+If you are into JVM internals you should look into my post about [Annotation Processing API in Java](http://mikolajkania.com/2016/06/28/what-is-project-lombok-and-why-you-should-use-it/){:target="_blank"}. Jabel is using similar path to provide its features.
 
 ## Using Jabel
 
