@@ -11,9 +11,8 @@ If you ever had a situation when you were forced to stick with specific Java ver
 
 The solution I mentioned above is called Jabel and the best part of it is insight it gives into JVM development. As it is stated in description:
 
-{% highlight plaintext %}
-The JVM has evolved a lot for the past years. However, most language features that were added are simply a syntatic sugar. They do not require new bytecode, hence can be compiled to the Java 8.
-{% endhighlight %}
+
+> The JVM has evolved a lot for the past years. However, most language features that were added are simply a syntatic sugar. They do not require new bytecode, hence can be compiled to the Java 8.
 
 Nice, right? Oracle changed whole release cycle, new features are being added continuously but the bytecode remains the same. Ok, but what bytecode is?
 
@@ -37,7 +36,7 @@ If you are into JVM internals you should look into my post about [Annotation Pro
 
 Going back to our main problem - let's say that we have code written in Java 13 and we are obligated to run it on Java 10. Consider following method:
 
-{% highlight java %}
+```java
 public static void main(String[] args) throws InterruptedException, ClassNotFoundException {
     // var is available since Java 10
     var c = Repository.lookupClass("pl.itblues.JavaVersions");
@@ -55,41 +54,42 @@ public static void main(String[] args) throws InterruptedException, ClassNotFoun
 
 
     Thread.sleep(10_000);
-{% endhighlight %}
+```
 
 Running this code on Java 10 must end with an error, as *text blocks* are available only since Java 13: 
 
-{% highlight plaintext %}
->%JAVA10%\bin\java -jar java-versions-1.0-SNAPSHOT-jar-with-dependencies.jar
+```console
+%JAVA10%\bin\java -jar java-versions-1.0-SNAPSHOT-jar-with-dependencies.jar
 Error: LinkageError occurred while loading main class pl.itblues.JavaVersions
         java.lang.UnsupportedClassVersionError: pl/itblues/JavaVersions has been compiled by a more recent version of the Java Runtime (class file version 57.65535), this version of the Java Runtime only recognizes class file versions up to 54.0
-{% endhighlight %}
+```
+
 
 But if you use it with Jabel the output will be much different:
 
-{% highlight plaintext %}
->%JAVA10%\bin\java -jar java-versions-1.0-SNAPSHOT-jar-with-dependencies.jar
+```console
+%JAVA10%\bin\java -jar java-versions-1.0-SNAPSHOT-jar-with-dependencies.jar
    Compiled Java version= 54
 Runtime Java version= 10.0.2
 From Gdańsk
 with love!
-{% endhighlight %}
+```
 
 Nice! But if you are following closely you can already ask yourself a question: why *compiled Java version* is 54, not 13? And from where this number came from in the first place? The reason for that is [convention](https://en.wikipedia.org/wiki/Java_class_file#General_layout){:target="_blank"} taken by Java creators, in which Java 10 has assigned number 54 and Java 13 - 57. The information is stored in class file that is created during compilation.
 
 Going back to the example: we compiled the code using Java 13 (compiled version 57) and JVM sees it as compiled with Java 10 (compiled version 54). It shouldn't work because of text blocks but it is, so we fulfilled a promise. Of course running the code with Java 13 will also work:
 
-{% highlight plaintext %}
->java -jar java-versions-1.0-SNAPSHOT-jar-with-dependencies.jar
+```console
+java -jar java-versions-1.0-SNAPSHOT-jar-with-dependencies.jar
    Compiled Java version= 54
 Runtime Java version= 13.0.2
 From Gdańsk
 with love!
-{% endhighlight %}
+```
 
 Cool, right? Jabel tricks compiler and removes checks that would prevent code to be run on older Java. Using it is as simple as adding annotation processor entry to your build process:      
 
-{% highlight xml %}
+```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-compiler-plugin</artifactId>
@@ -108,23 +108,24 @@ Cool, right? Jabel tricks compiler and removes checks that would prevent code to
         </annotationProcessors>
     </configuration>
 </plugin>
-{% endhighlight %}  
+```  
 
 ## Not a perfect solution
 
 Despite being a very handy tool Jabel is not perfect time (or version) traveller for Java. You will reach its limits while using invocations or methods that are physically absent in older versions. The example of that might be String class method *strip*, which is present since release 11:   
 
-{% highlight java %}
+```java
 String msg = "   Compiled Java version= " + c.getMajor();
 // strip method is available since Java 11, but can't be used even with Jabel
 System.out.println(msg.strip());
-{% endhighlight %}
+```
 
 Trying to compile this piece of code will end with error:
 
-{% highlight plaintext %}
+
+```console
 Error:(16,31) java: cannot find symbol
-{% endhighlight %}
+```
 
 As stated in official project issue tracker, making it cover such issues would be a very different aim for a project. Discussion around it can be found [here](https://github.com/bsideup/jabel/issues/3){:target="_blank"}.
 
