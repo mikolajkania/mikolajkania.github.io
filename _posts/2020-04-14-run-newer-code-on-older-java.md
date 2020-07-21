@@ -131,4 +131,4 @@ As stated in official project issue tracker, making it cover such issues would b
 
 ## Summary
 
-In this post I provided suggestion how to deal with situation when newer Java code has to be run on older JVM. I also dived deeper into what is bytecode and how process of creating a executable Java code looks like. If you want to try [Jabel](https://github.com/bsideup/jabel){:target="_blank"}  yourself head into its repo or use my [project](https://github.com/bsideup/jabel){:target="_blank"}. 
+In this post I provided suggestion how to deal with situation when newer Java code has to be run on older JVM. I also dived deeper into what is bytecode and how process of creating a executable Java code looks like. If you want to try [Jabel](https://github.com/bsideup/jabel){:target="_blank"}  yourself head into its repo or use my [project](https://github.com/mikolajkania/run-newer-code-on-older-java-version){:target="_blank"}. 
