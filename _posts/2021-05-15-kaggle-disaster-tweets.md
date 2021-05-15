@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Kaggle disaster tweets
+title: Kaggle
 ---
 
 I took part in Kaggle's NLP competition called [Disaster Tweets](https://www.kaggle.com/c/nlp-getting-started/overview). The goal was to predict if given tweet is about real catastrophe or not. 
