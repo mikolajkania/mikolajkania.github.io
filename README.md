@@ -1,4 +1,6 @@
-# Software engineering by Mikołaj Kania
+# Software engineering blog by Mikołaj Kania
+
+It could be found on the Internet [here](https://mikolajkania.com/)!
 
 
 # Site was creating with Hyde
