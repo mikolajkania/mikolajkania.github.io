@@ -3,7 +3,7 @@ layout: post
 title: Can DVC be used for Kaggle?
 ---
 
-The more I am working with data science, the more need for organized process I see. It can be enforced be conventions, documentation, code reviews, but as always it is automation that pays off the most. 'Developer *must* be lazy', as one of my teachers used to say, and he was right: with easy to follow steps it is easier to solve the tasks and harder to make a silly mistake. This is why, when I took part in another [Kaggle competition](https://github.com/mikolajkania/kaggle-03-house-prices), I tried to build it around more mature ideas than just experimenting in Jupyter Notebook.
+The more I am working with data science, the more need for organized process I see. It can be enforced be conventions, documentation, code reviews, but as always it is automation that pays off the most. 'Developer *must* be lazy', as one of my teachers used to say. This is why, when I took part in another [Kaggle competition](https://github.com/mikolajkania/kaggle-03-house-prices), I tried to build it around more mature ideas than just experimenting in Jupyter Notebook.
 
 <!--excerpt-->
 
