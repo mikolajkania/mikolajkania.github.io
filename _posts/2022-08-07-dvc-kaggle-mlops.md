@@ -37,7 +37,7 @@ For Kaggle I built process around above concept. For every major experiment type
 
 Here you can see it in action. Firstly I updated [params.yaml](https://github.com/mikolajkania/kaggle-03-house-prices/pull/13/commits/48ce984c153aa9ee9c70f50fbbb077b3cf0f4ae5#diff-f2f91cb656b58c7f581dcbdf3227f06412b648c6e0a5c10ea26e131c1eaa07e8) and run *dvc repro*:
 
-![placeholder](https://raw.githubusercontent.com/mikolajkania/mikolajkania.github.io/master/_images/2022-08-07-dvc-queue.png "dvc queue")
+![placeholder](https://raw.githubusercontent.com/mikolajkania/mikolajkania.github.io/master/_images/2022-08-07-params.png "dvc params.yaml")
 
 Secondly, model was trained, [metrics stored in a file](https://github.com/mikolajkania/kaggle-03-house-prices/pull/13/commits/48ce984c153aa9ee9c70f50fbbb077b3cf0f4ae5#diff-0ea8d36aa8b430bd09f958eed7f3f695dc963bc366b3fb4362a3c96b30b60f8e) and after my review - [committed to repo](https://github.com/mikolajkania/kaggle-03-house-prices/pull/13/commits). The last step was to merge code into main branch. 
 
@@ -61,7 +61,7 @@ When starting working with this feature, I was prepared for some drawbacks. Firs
 
 What I didn't expected, though, were issues while [scheduling experiments](https://dvc.org/doc/user-guide/experiment-management/running-experiments#the-experiments-queue).
 
-![placeholder](https://raw.githubusercontent.com/mikolajkania/mikolajkania.github.io/master/_images/2022-08-07-dvc.png "dvc.yaml")
+![placeholder](https://raw.githubusercontent.com/mikolajkania/mikolajkania.github.io/master/_images/2022-08-07-dvc-queue.png "dvc queue")
 
 Instant run of single experiment, which is similar to *dvc repro* but with experiment added to a *leaderboard*, was working ok. Unfortunately, it was not a use case for me, as I had high expectation towards scheduling multiple runs with different parameters and comparison of its outputs. It was especially important for me at the end of experimentation, when many parameters and algorithms were already available in my framework. Running *dvc repro* for every combination was tedious, but idea of 'schedule and go for a walk' was appealing. Not this time and it was a major blow.
 
