@@ -1,4 +1,4 @@
-# Software engineering blog by Mikołaj Kania
+# Software engineering by Mikołaj Kania
 
 It could be found on the Internet [here](https://mikolajkania.com/)!
 
