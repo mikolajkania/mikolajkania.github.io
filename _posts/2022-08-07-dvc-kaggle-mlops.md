@@ -73,7 +73,7 @@ But if I spent more time on this competition, I'd explore how to introduce noteb
 
 # Summary
 
-In this blog post I described how to use DVC as building block of Kaggle competition. Despite a few drawbacks it helps to organize code in a more elegant way, easily run and track experiments, making it a good introduction into MLOps topic. What's more, beyond Kaggle, its impact can be even strengthened in environment where few data scientists are working together, due to clear structure and easy to track configuration. I highly recommend giving it a chance.
+In this blog post I described how to use DVC as building block of Kaggle competition. Despite a few drawbacks it helps to organize code in a more elegant way, easily run and track experiments, is a good introduction into MLOps topic. What's more, beyond Kaggle, its impact can be even strengthened in environment where few data scientists are working together, due to clear structure and easy to track configuration. I highly recommend giving it a chance.
 
 
 
