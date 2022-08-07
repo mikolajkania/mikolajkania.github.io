@@ -41,7 +41,7 @@ Here you can see it in action. Firstly I updated [params.yaml](https://github.co
 
 Secondly, model was trained, [metrics stored in a file](https://github.com/mikolajkania/kaggle-03-house-prices/pull/13/commits/48ce984c153aa9ee9c70f50fbbb077b3cf0f4ae5#diff-0ea8d36aa8b430bd09f958eed7f3f695dc963bc366b3fb4362a3c96b30b60f8e) and after my review - [committed to repo](https://github.com/mikolajkania/kaggle-03-house-prices/pull/13/commits). The last step was to merge code into main branch. 
 
-Because of that it was also easier to gather all metrics, as they are sitting in Git history. You can see my summary [here](https://github.com/mikolajkania/kaggle-03-house-prices). 
+Because of that it was also easier to gather all metrics, as they are sitting in Git history. You can see my summary [here](https://github.com/mikolajkania/kaggle-03-house-prices/blob/main/README.md#results). 
 
 ## Reproducibility
 
