@@ -3,7 +3,7 @@ layout: post
 title: Can DVC be used for Kaggle?
 ---
 
-The more I am working with data science, the more need for organized process I see. It can be enforced be conventions, documentation, code reviews, but as always it is automation that pays off the most. 'Developer *must* be lazy', as one of my teachers used to say. This is why, when I took part in another [Kaggle competition](https://github.com/mikolajkania/kaggle-03-house-prices), I tried to build it around more mature ideas than just experimenting in Jupyter Notebook.
+The more I am working with data science, the more need for organized process I see. It can be enforced be conventions, documentation, code reviews, but as always it is automation that pays off the most. 'Developer *must* be lazy', as one of my teachers used to say. This is why, when I took part in another [Kaggle competition](https://github.com/mikolajkania/kaggle-03-house-prices), I decided to build it around more mature ideas than just experimenting in Jupyter Notebook.
 
 <!--excerpt-->
 
@@ -74,13 +74,3 @@ But if I spent more time on this competition, I'd explore how to introduce noteb
 # Summary
 
 In this blog post I described how to use DVC as building block of Kaggle competition. Despite a few drawbacks it helps to organize code in a more elegant way, easily run and track experiments, is a good introduction into MLOps topic. What's more, beyond Kaggle, its impact can be even strengthened in environment where few data scientists are working together, due to clear structure and easy to track configuration. I highly recommend giving it a chance.
-
-
-
-
-
-
-
-
-
-
