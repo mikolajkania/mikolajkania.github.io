@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 2023, My year in review
+title: 2023 - My year in review
 ---
 
 Looking back into learnings, changes and... culture.
@@ -13,19 +13,19 @@ When you are joining an industry to develop as a machine learning specialist, yo
 ## Running experiments
 Capability to have a predictable and transparent experiments execution is a crucial part of **[mature MLOps setup](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning)**.
 
-**[Amazon Sagemaker pipelines](https://aws.amazon.com/sagemaker/pipelines/)** and processing jobs are an answer to the need to build high-quality services. Their advantages are broad: trackable executions, flexible resources allocation, reproducibility or caching are first coming to my mind. It is not without its issues, however: jobs are sometimes hanging, metrics tracking at the time of using was irritating and I would expect a better protection from unexpected costs. Overally it is an option worth considering, but of course, it is more about capabilities provided than actual vendor.
+**[Amazon Sagemaker pipelines](https://aws.amazon.com/sagemaker/pipelines/)** and processing jobs are an answer to the need to build high-quality services. Their advantages are broad: trackable executions, flexible resources allocation, reproducibility or caching are first coming to mind. It is not without its issues, however: jobs are sometimes hanging, metrics tracking is irritating and I would expect a better protection from an unexpected costs. Overally it is an option worth considering.
 
 My journey in choosing a backbone experimentation runner was involving [DVC](https://dvc.org/doc/start/experiments), [Kedro](https://kedro.org/), [Prefect](https://www.prefect.io/) and **ordinary Python scripts**. I ended up with the last option, without adding additional level of abstraction - complexity should be added only when actual need is identified. Having said that, I can definitely see **Prefect** as a good workflow manager in the advanced pipelines.
 
 ## Tracking
-Centralized metrics tracking is subpar in Sagemaker and too limited in [DVC](https://dvc.org/doc/start/data-management/metrics-parameters-plots). Although I found [mlflow](https://www.mlflow.org/) a bit too clunky, it is an industry standard for a good reason due to integrations and a solid documentation.
+Centralized metrics tracking is subpar in Sagemaker and too limited in [DVC](https://dvc.org/doc/start/data-management/metrics-parameters-plots). Although I found [mlflow](https://www.mlflow.org/) a bit too clunky, it is an industry standard for a good reason, due to integrations and a solid documentation.
 
 After further research, I gave **[Weights & Biases](https://wandb.ai/)** a chance, and it turned out to be well-designed and approachable. Its documentation is good and I found their integrations and model storages easy to set up; also ecosystem was inviting to start with only subset of features. I really liked how easy it is to run it locally for experimentation and go online for finalized runs. There is also an **[Optuna callback](https://github.com/nzw0301/optuna-wandb)** for W&B, which makes it easier to inject hyperparameter tuning into your workflow.
 
 ## IDE
-As a Windows 10 user I was happy to have **[WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/about)** part of my workflow. It enabled me to run IDE on my main OS and execute code on Ubuntu. It is a very neat combination, especially if you want to avoid subtle differences between your code in development and production.
+As a Windows 10 user I was happy to have **[WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/about)** as part of my workflow. It enabled me to run IDE on my main OS and execute code on Ubuntu. It is a very neat combination, especially if you want to avoid subtle differences between your code in development and production.
 
-Unfortunately when I upgraded to Windows 11 I found [performance issues](https://twitter.com/MikolajKania/status/1695742269138026533) that were blocking me from using Intellij IDEA. The main reason was an upgrade, but JetBrains was slow to fix their part - it was resolved after few weeks in one of minor versions. It was so painful, that I was seriously considering giving VS Code a shot.
+Unfortunately when I upgraded to Windows 11 I found [performance issues](https://twitter.com/MikolajKania/status/1695742269138026533) that were blocking me from using Intellij IDEA. The main reason was an upgrade, but JetBrains was slow to fix their part - it was resolved after few weeks in one of minor versions. It was so painful, that I was seriously considering migrating to VS Code.
 
 Before coming back to my original setup, I tested a few wild options like [running IDE directly on Ubuntu](https://towardsdev.com/the-complete-guide-to-using-wsl-in-jetbrains-ides-dd45d354f5e5) or connecting to it via [Gateway](https://www.jetbrains.com/remote-development/gateway/). I hope JetBrains will prioritize their support for WSL, because overally it a very capable tool I would happily continue to use. 
 
@@ -37,7 +37,7 @@ Last year I tried [GitHub Copilot](https://github.com/features/copilot) (before 
 I ended the year trying **[Codeium](https://codeium.com/)**. It is very similar to JetBrains AI, but for now - free. Coding suggestions, chatbot, features like explaining a file or generating documentation are working great for my personal coding.
 
 # Roles
-Leading a team through ups and downs towards a business goals was an extraordinary experience. I was working with great people who I tried to support in their growth. I believe I have put my mark on both technology and processes. 
+Leading a team through ups and downs towards a business goals was an extraordinary experience. I was working with great people who I supported in their growth. I believe I have put my mark on both technology and processes. 
 
 Every journey has its end, however, and this year I decided to try myself in another role. I became a **Technical Program Manager**, with a task to oversee execution and delivery of the projects, while still keeping an eye on ML technology. It is the biggest change since I decided to switch from backend development to machine learning few years ago and a welcome challenge.
 
@@ -78,4 +78,4 @@ It was a very Polish year for me, as [Dawid Podsiadło](https://open.spotify.com
 I was fortunate to see live few great bands: [Arctic Monkeys](https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH) (EN, Open'er festival in Gdynia), [Rammstein](https://open.spotify.com/artist/6wWVKhxIU2cEi0K81v7HvP) (DE, for the second time, Chorzów) and [Dawid Podsiadło]((https://open.spotify.com/artist/6EB8VE9f7Ut6NOgviN6gDW)) (PL, Sopot), among others.
 
 # 2024
-Thanks for reading to the end and more information coming soon
+Thanks for reading to the end and more information coming soon!
