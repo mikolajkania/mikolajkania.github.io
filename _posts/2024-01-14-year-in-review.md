@@ -8,72 +8,74 @@ Looking back into learnings, changes and... culture.
 <!--excerpt-->
 
 # Engineering
-When you are joining an industry to develop as machine learning specialist, you envision yourself a problem solver of endless stream of projects. The thing is, that whereas it is important to sharpen data science skills, equally important it keep engineering side taken care of. Being backend & search engineer in the past helped me to embrace this truth and in 2023 I had my tooling set and predictions confirmed by experience.
+When you are joining an industry to develop as a machine learning specialist, you envision yourself a problem solver in an endless stream of projects. The truth is, however, that whereas it is important to sharpen data science skills, equally important it keep engineering side taken care of. My experience as backend & search engineer helped me to embrace this truth quite early I am ready to share my basic **MLOps overview**.  
 
-## MLOps
-**AWS Sagemaker** processing jobs and pipelines is the answer to the need to build high-quality services. Their advantages are vast: trackable executions and outcomes, resources allocation per intermediate task, reproducibility, caching, ability to retroactively review the runs. It also helps to separate a code of a Python package from a script that is running it in the cloud. It is not without its issues: jobs are sometimes hanging, convenient metrics tracking at the time of using was irritating, but overally it is an option worth exploring.
+## Running experiments
+Capability to have a predictable and transparent experiments execution is a crucial part of **[mature MLOps setup](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning)**.
 
-My journey in choosing backbone experimentation runner was involving DVC, Kedro, Prefect, Flyte and ordinary Python scripts. My learning was to keep it simple as long as possible, as every tool is adding additional complexity to the coding environment. Still, I definitely can imagine Prefect as a workflow manager in advanced pipelines.
+**[Amazon Sagemaker pipelines](https://aws.amazon.com/sagemaker/pipelines/)** and processing jobs are an answer to the need to build high-quality services. Their advantages are broad: trackable executions, flexible resources allocation, reproducibility or caching are first coming to my mind. It is not without its issues, however: jobs are sometimes hanging, metrics tracking at the time of using was irritating and I would expect a better protection from unexpected costs. Overally it is an option worth considering, but of course, it is more about capabilities provided than actual vendor.
+
+My journey in choosing a backbone experimentation runner was involving [DVC](https://dvc.org/doc/start/experiments), [Kedro](https://kedro.org/), [Prefect](https://www.prefect.io/) and **ordinary Python scripts**. I ended up with the last option, without adding additional level of abstraction - complexity should be added only when actual need is identified. Having said that, I can definitely see **Prefect** as a good workflow manager in the advanced pipelines.
 
 ## Tracking
-Metrics tracking is subpar in a native Sagemaker, too limited in DVC Experiments and I didn't fully click with industry standard - mlflow; still it was a good tool that I would be comfortable using.
+Centralized metrics tracking is subpar in Sagemaker and too limited in [DVC](https://dvc.org/doc/start/data-management/metrics-parameters-plots). Although I found [mlflow](https://www.mlflow.org/) a bit too clunky, it is an industry standard for a good reason due to integrations and a solid documentation.
 
-I found Weights & Biases well designed and approachable. What I like about W&B is that their integrations are well-thought and you are not forced to use all of them since the beginning, which was my impression with mlflow. You can pick and choose functionalities as your project grows and I ended up experimenting with not only tracking, but also their models storage. I really liked how easy it is to run it locally for experimentation and go online for finalized runs. There is also an Optuna callback for W&B, which makes it easier to inject hyperparameter tuning into your workflow.
+After further research, I gave **[Weights & Biases](https://wandb.ai/)** a chance, and it turned out to be well-designed and approachable. Its documentation is good and I found their integrations and model storages easy to set up; also ecosystem was inviting to start with only subset of features. I really liked how easy it is to run it locally for experimentation and go online for finalized runs. There is also an **[Optuna callback](https://github.com/nzw0301/optuna-wandb)** for W&B, which makes it easier to inject hyperparameter tuning into your workflow.
 
-Comet looked like an interesting competitor to W&B, but its offline functionality was limited and number of features at the same price - lower. Still, I count on them to provide competition in this field.
+## IDE
+As a Windows 10 user I was happy to have **[WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/about)** part of my workflow. It enabled me to run IDE on my main OS and execute code on Ubuntu. It is a very neat combination, especially if you want to avoid subtle differences between your code in development and production.
 
-## Environment
-As a Windows user I was happy to have WSL2 part of my workflow. It enabled me to use tools on my main OS and execute code on Ubuntu - very neat combination. Unfortunately when I upgraded to Windows 11 I found performance issues that I initially a attributed to Intellij IDEA. After digging, it turned out that biggest issue is related to the upgrade. It was a setback, as I was happy with the newest Windows, I was happy with my environment and workflow, but now needed to explore how to change it.
+Unfortunately when I upgraded to Windows 11 I found [performance issues](https://twitter.com/MikolajKania/status/1695742269138026533) that were blocking me from using Intellij IDEA. The main reason was an upgrade, but JetBrains was slow to fix their part - it was resolved after few weeks in one of minor versions. It was so painful, that I was seriously considering giving VS Code a shot.
 
-Issues with Windows and JetBrains being much too slow to fix their own issue, lead me to try wild options, like running Intellij IDEA from Ubuntu directly - it works pretty ok, but is a big buggy and is not supporting enough features like debugger or Jupyter Notebooks. In the end I am **sharing coding between Windows and WSL2/Ubuntu**, taking the convenience of tools working natively on my main OS and trying to have as much as possible run on Linux. Fingers crossed that Intellij IDEA/ PyCharm will be prioritized by JetBrains as it is getting harder to justify paying for an individual license.
+Before coming back to my original setup, I tested a few wild options like [running IDE directly on Ubuntu](https://towardsdev.com/the-complete-guide-to-using-wsl-in-jetbrains-ides-dd45d354f5e5) or connecting to it via [Gateway](https://www.jetbrains.com/remote-development/gateway/). I hope JetBrains will prioritize their support for WSL, because overally it a very capable tool I would happily continue to use. 
 
 ## Coding assistance
-Popularity of GPT is visible also in a coding area. I am not recommending code generation for every developer - you should try to write as much as possible yourself during early days of your career - but it can be a good help.
+I am not recommending code generation for every developer - you should code as much as possible yourself, especially during early days of your career - but it can be a good support when used wisely.
 
-Last year I tried GitHub Copilot (before version X was introduced) and it was encouraging; only the integration in JetBrains products could be better. AWS CodeWhisperer was too sluggish and I was not happy with an experience. AI Assistance from JetBrains was impressive, well integrated and was adding chat in the UI, but the pricing on the top of current pricing is really bad.
+Last year I tried [GitHub Copilot](https://github.com/features/copilot) (before version X was introduced) and it was encouraging; only the integration in JetBrains products could have been better. [Amazon CodeWhisperer](https://aws.amazon.com/codewhisperer/) was too sluggish for my taste and [JetBrains AI](https://www.jetbrains.com/ai/) impressed me until I saw their unappealing pricing on the top of existing subscription.
 
-I ended the year by trying **Codeium** and I am really impressed. It is similar to AI Assistance in IDEA, but - for now - free and capable. Coding suggestions, chat, features like explaining a file or generating documentation are great. For now it is an easy recommendation for private projects.
+I ended the year trying **[Codeium](https://codeium.com/)**. It is very similar to JetBrains AI, but for now - free. Coding suggestions, chatbot, features like explaining a file or generating documentation are working great for my personal coding.
 
 # Roles
-Leading a team through ups and downs towards a business goals was an extraordinary experience. I was working with a great people who I tried to support in their growth. I believe I put my mark on technology and processes, especially on team management side where I introduced good practices like very open and trackable 1:1s (an inspiration from XXX).
+Leading a team through ups and downs towards a business goals was an extraordinary experience. I was working with great people who I tried to support in their growth. I believe I have put my mark on both technology and processes. 
 
-Every journey has its end, however, and this year I decided to try myself in another role. I became a **Technical Program Manger**, with a task to oversee execution and delivery of the projects, while still keeping an eye on technology. It is the biggest change since I decided to switch from Java/backend into Python/ML few years ago. Now I am completing my overview of projects lifecycle, being always interested in more than just pure coding. Still, as you can see above I am enjoying it after a short sabbatical!
+Every journey has its end, however, and this year I decided to try myself in another role. I became a **Technical Program Manager**, with a task to oversee execution and delivery of the projects, while still keeping an eye on ML technology. It is the biggest change since I decided to switch from backend development to machine learning few years ago and a welcome challenge.
 
-In both roles I helped to deliver features this year and my first project as TPM landed in a hands of customers. Looking forward to what 2024 will bring.
+In both roles I helped to deliver features this year and my first project as TPM landed in a [hands of customers](https://www.wolterskluwer.com/en/news/wolters-kluwer-integrates-genai-into-its-legal-research-products). I am looking forward to what 2024 will bring.
 
 # Knowledge vault
-Transitions are always creating new challenges, and this year my attention switched to non-engineering knowledge extensions as well.
+Transitions are certainly bringing about new challenges, and this year my attention was occupied by both engineering and project management resources.
 
-## Google Project Manager specialization
-A very broad and informative course on project management. I learnt a lot and hands-on tasks helped to put it in practice. I was doing it during transition period, learning on a topics I was immediately applying in a real life. I ended a course with a completion certificate. Whereas I can highly recommend it, I'd like to see a follow-up on topic of data-driven approach to executing projects, which was just briefly touched.
+## Google Project Management
+**[GPM](https://www.coursera.org/professional-certificates/google-project-management)** is a very broad and informative course on project management. I learnt a lot and was immediately able to use new skills in practice. I ended the course with a [certificate](https://coursera.org/share/468cd27fe0d809f226516cbd58c7ec6a) of completion, which was a satisfying milestone. Whereas I can highly recommend it, I'd like to see a follow-up on topic of data-driven approach to executing projects, which was only briefly touched.
 
-## GPT prompting - Deep Learning AI
-GPT took the world by storm. To better understanding prompt engineering I took the short course from famous Andrew Ng. It is a solid intro to the matter, but practice and following trends is needed in this very young field.
+## ChatGPT Prompt Engineering for Developers
+For better understanding of prompts creation I took **[a short course](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/)** from famous Andrew Ng. It is a solid intro to a prompting area, but practice and staying on the top of new findings is needed in this very young field.
 
 ## Finishing books
-Project Phoenix was a quite interesting look into how a whole company can be transformed to be more agile. It also made DevOps culture a topic understandable for managers. I was happy to observe such transformation myself in an early years of my career, so the book was not so eye-opening for me. However, there were highlights to keep: for instance how different division on a company can see each other and compete without proper communication.
+**[The Phoenix Project](https://www.oreilly.com/library/view/the-phoenix-project/9781457191350/)** was quite interesting look into a process of transforming company culture from waterfall to agile. It also made DevOps principles famous. I was fortunate to observe such transformation myself in the early years of my career, so the book was not so eye-opening for me. However, there were highlights to keep, for instance how different divisions in one company can see each other and compete without proper communication.
 
-Introduction to Keras & Tensorflow is a solid book that organize and extend ideas beyond what can be found in documentation. I found parts of it useful and well explained, but the more you are experience the less you need such read.
+I like Mannings's hands-on books and **[Natural Language Processing in Action](https://www.manning.com/books/natural-language-processing-in-action)** is no different. It is an easy recommendation for everyone interested in NLP field. It explains topics very well and I can only regret it was not extended more into state-of-the-art transformers and LLMs.
 
-NLP is a an easy recommendation for everyone interested in NLP field. It explains topics very well and I can only regret it was not extended more into state-of-the-art transformers and LLMs. As with Keras, it structures the knowledge that would be fragmented otherwise.
+**[Deep Learning with Python](https://www.manning.com/books/deep-learning-with-python-second-edition)** is a solid book that organizes deep learning fundaments and extends ideas beyond what can be found in Keras/Tensorflow documentation. I found parts of it useful and well explained.
 
 # Culture
-As the last part, let me share few recommendation from a cultural field.
+As the last part, let me share a few recommendations from a cultural field. We all need a break! 
 
 ## Books
-Overview can be found on [Goodreads](https://www.goodreads.com/user/year_in_books/2023/5724806), with Lord of the flies (EN) and Informacja Zwrotna (PL) being my instant classics due to their provocative themes.
-
-## Music
-It was a very Polish year for me, as Dawid Podsiadło, Taco Hemingway and Lor rocked my 2023. Listening to autobiography of Bono brought U2 back into my radar.
-
-## Concerts
-I was happy to see a few great bands: Arctic Monkeys (EN, Open'er festival in Gdynia), Rammstein (DE, for the second time, Chorzów), Dawid Podsiadło (PL, Sopot).
+Overview can be found on [Goodreads](https://www.goodreads.com/user/year_in_books/2023/5724806), with [Lord of the flies](https://www.goodreads.com/book/show/7624.Lord_of_the_Flies) (EN) and [Informacja Zwrotna](https://www.goodreads.com/book/show/56469273-informacja-zwrotna) (PL) being my instant classics due to their provocative themes. Audiobooks are helping me to catch-up.
 
 ## Movies
-Genres from musical, through drama up to animation cemented 2023 as a very [satisfying year](https://www.filmweb.pl/user/MickyThump) for me: Hamilton, Ghosts of Inisherin, Oppenheimer, Across Multiverse.
+Movies of genres ranging from musical, through drama up to animation cemented 2023 as a very [satisfying year](https://www.filmweb.pl/user/MickyThump) for me: [Hamilton](https://www.imdb.com/title/tt8503618/), [Ghosts of Inisherin](https://www.imdb.com/title/tt11813216/), [Oppenheimer](https://www.imdb.com/title/tt15398776/), [Across Multiverse](https://www.imdb.com/title/tt9362722/) or [Pearl](https://www.imdb.com/title/tt18925334/).
 
 ## TV Shows
-Succession did with ending what Game of Thrones was not capable of with its ending, Fargo is beautifully written and Severance is a proof that you can always came up with a new, wild idea in an era of remixes and productions designed by accountants.
+[Succession](https://www.imdb.com/title/tt7660850/) did with its ending what Game of Thrones was not capable of, [Fargo](https://www.imdb.com/title/tt2802850/) is beautifully written and [Severance](https://www.imdb.com/title/tt11280740/) proofs that you can always come up with a new, wild idea in an era of remixes and productions designed by accountants.
+
+## Music
+It was a very Polish year for me, as [Dawid Podsiadło](https://open.spotify.com/artist/6EB8VE9f7Ut6NOgviN6gDW), [Taco Hemingway](https://open.spotify.com/artist/7CJgLPEqiIRuneZSolpawQ) and [Lor](https://open.spotify.com/artist/0TwM0vzeyhAMTegVdIq8rx) dominated my 2023. Listening to [autobiography of Bono](https://www.audible.com/pd/Surrender-Audiobook/B09ZK5B962) brought [U2](https://open.spotify.com/artist/51Blml2LZPmy7TTiAg47vQ) back into my radar.
+
+## Concerts
+I was fortunate to see live few great bands: [Arctic Monkeys](https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH) (EN, Open'er festival in Gdynia), [Rammstein](https://open.spotify.com/artist/6wWVKhxIU2cEi0K81v7HvP) (DE, for the second time, Chorzów) and [Dawid Podsiadło]((https://open.spotify.com/artist/6EB8VE9f7Ut6NOgviN6gDW)) (PL, Sopot), among others.
 
 # 2024
-More to come and share soon!
+Thanks for reading to the end and more information coming soon
