@@ -11,8 +11,8 @@ kramdown:
 permalink:        pretty
 
 # Setup
-title:            Software engineering by Mikołaj Kania
-description:      '<a href="https://pl.linkedin.com/in/mikolajkania" target="_blank">Mikołaj Kania</a> <br/> I blog about machine learning, software engineering, search engines.'
+title:            Engineering blog by Mikołaj Kania
+description:      "<a href='https://pl.linkedin.com/in/mikolajkania' target='_blank'><b>Mikołaj Kania</b></a> <br/> Technical Program Manager, Team Lead and Software Engineer. I blog about machine learning, search engines and software development. Let's stay in touch!"
 linkedin:		  http://www.linkedin.com/in/mikolajkania/
 twitter:		  https://twitter.com/MikolajKania
 medium:           https://medium.com/@mikolajkania
