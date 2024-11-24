@@ -78,4 +78,4 @@ It was a very Polish year for me, as [Dawid Podsiadło](https://open.spotify.com
 I was fortunate to see live few great bands: [Arctic Monkeys](https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH) (EN, Open'er festival in Gdynia), [Rammstein](https://open.spotify.com/artist/6wWVKhxIU2cEi0K81v7HvP) (DE, for the second time, Chorzów) and [Dawid Podsiadło]((https://open.spotify.com/artist/6EB8VE9f7Ut6NOgviN6gDW)) (PL, Sopot), among others.
 
 # 2024
-Thanks for reading to the end and more information coming soon!
+Thanks for reading to the end and let's stay in touch!

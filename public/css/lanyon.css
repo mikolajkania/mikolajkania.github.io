@@ -45,7 +45,7 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "PT Sans", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, "PT Sans", Arial, sans-serif;
     font-weight: 400;
     color: #313131;
     letter-spacing: -.025rem;
@@ -102,7 +102,10 @@ h1, h2, h3, h4, h5, h6 {
 .masthead-title {
     margin-top: 0;
     margin-bottom: 0;
-    color: #505050;
+    color: #303030;
+    text-align: center;
+    font-weight: 900;
+    font-size: 1.2rem;
 }
 .masthead-title a {
     color: #505050;
@@ -312,7 +315,8 @@ a.sidebar-nav-item:focus {
 .post-title,
 .post-title a {
     color: #303030;
-    font-weight: 900;
+    font-weight: 600;
+    font-size: 2.1rem;
 }
 .page-title,
 .post-title {
