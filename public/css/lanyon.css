@@ -102,13 +102,13 @@ h1, h2, h3, h4, h5, h6 {
 .masthead-title {
     margin-top: 0;
     margin-bottom: 0;
-    color: #303030;
+    color: #505050;
     text-align: center;
-    font-weight: 900;
-    font-size: 1.2rem;
+    font-weight: 800;
+    font-size: 1.05rem;
 }
 .masthead-title a {
-    color: #303030;
+    color: #505050;
 }
 .masthead-title small {
     font-size: 75%;
