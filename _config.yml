@@ -11,7 +11,7 @@ kramdown:
 permalink:        pretty
 
 # Setup
-title:            Blog by Mikołaj Kania
+title:            Mikołaj Kania
 description:      "<a href='https://pl.linkedin.com/in/mikolajkania' target='_blank'><b>Mikołaj Kania</b></a> <br/> Technical PM | AI/ML Team Lead | Software Engineer"
 linkedin:		  http://www.linkedin.com/in/mikolajkania/
 twitter:		  https://twitter.com/MikolajKania
