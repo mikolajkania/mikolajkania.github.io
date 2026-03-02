@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 2023 - My year in review
+title: 2023 - The year of change
 ---
 
-Looking back into learnings, changes and... culture.
+Something ends, something begins.
 
 <!--excerpt-->
 
