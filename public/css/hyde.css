@@ -1,283 +1,35 @@
 /*
- *  __                  __
- * /\ \                /\ \
- * \ \ \___   __  __   \_\ \     __
- *  \ \  _ `\/\ \/\ \  /'_` \  /'__`\
- *   \ \ \ \ \ \ \_\ \/\ \_\ \/\  __/
- *    \ \_\ \_\/`____ \ \___,_\ \____\
- *     \/_/\/_/`/___/> \/__,_ /\/____/
- *                /\___/
- *                \/__/
- *
- * Designed, built, and released under MIT license by @mdo. Learn more at
- * https://github.com/poole/hyde.
+ * hyde.css — Theme overrides (2025 refresh)
  */
 
 
-/*
- * Contents
- *
- * Global resets
- * Sidebar
- * Container
- * Reverse layout
- * Themes
- */
-
-
-/*
- * Global resets
- *
- * Update the foundational and global aspects of the page.
- */
+/* Body font sizing */
 
 html {
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+    font-family: "PT Serif", Georgia, "Times New Roman", serif;
 }
+
 @media (min-width: 48em) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 17px;
+    }
 }
+
 @media (min-width: 58em) {
-  html {
-    font-size: 20px;
-  }
-}
-
-/*
- * Sidebar
- *
- * Flexible banner for housing site name, intro, and "footer" content. Starts
- * out above content in mobile and later moves to the side with wider viewports.
- */
-
-.hr-sidebar {
-  border: 0 #9a9a9a;
-  height: 1px;
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-}
-
-.sidebar {
-  text-align: center;
-  padding: 3em 1.6875em;
-}
-@media (min-width: 48em) {
-  .sidebar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 20rem;
-    text-align: center;
-  }
-}
-
-/* Sidebar links */
-.sidebar a {
-  color: #333333;
-}
-
-/* About section */
-.sidebar-about h1 {
-  color: #fff;
-  margin-top: 0;
-  font-family: "Abril Fatface", serif;
-  font-size: 3.25rem;
-}
-
-/* Sidebar nav */
-.sidebar-nav {
-  margin-bottom: 1rem;
-}
-.sidebar-nav-item {
-  display: block;
-  line-height: 1.75;
-}
-a.sidebar-nav-item:hover,
-a.sidebar-nav-item:focus {
-  text-decoration: underline;
-}
-.sidebar-nav-item.active {
-  font-weight: bold;
-}
-
-/* Sticky sidebar
- *
- * Add the `sidebar-sticky` class to the sidebar's container to affix it the
- * contents to the bottom of the sidebar in tablets and up.
- */
-
-@media (min-width: 48em) {
-  .sidebar-sticky {
-    position: absolute;
-    right:  1rem;
-    bottom: 1rem;
-    left:   1rem;
-  }
-}
-
-
-/* Container
- *
- * Align the contents of the site above the proper threshold with some margin-fu
- * with a 25%-wide `.sidebar`.
- */
-
-.content {
-  padding-top:    2rem;
-  padding-bottom: 1rem;
-}
-
-@media (min-width: 48em) {
-  .content {
-    max-width: 38rem;
-    margin-left: 20rem;
-    margin-right: 2rem;
-  }
-}
-
-@media (min-width: 64em) {
-  .content {
-    margin-left: 22rem;
-    margin-right: 4rem;
-  }
-}
-
-/*
- * Hiding sidebar
- */
-@media(max-width: 768px) {
-    .sidebar {
-        text-align: center;
-        padding: 1em 1.6875em;
-    }
-    .sidebar-nav {
-        display: none;
-    }
-    .adsense-sidebar {
-        display: none;
-    }
-    .hr-sidebar {
-        display: none;
-    }
-    .content {
-        padding-top:    0;
-        padding-bottom: 1rem;
+    html {
+        font-size: 18px;
     }
 }
 
 
-/*
- * Reverse layout
- *
- * Flip the orientation of the page by placing the `.sidebar` on the right.
- */
+/* Custom theme: link and accent colors */
 
-@media (min-width: 48em) {
-  .layout-reverse .sidebar {
-    left: auto;
-    right: 0;
-  }
-  .layout-reverse .content {
-    margin-left: 2rem;
-    margin-right: 20rem;
-  }
-}
-
-@media (min-width: 64em) {
-  .layout-reverse .content {
-    margin-left: 4rem;
-    margin-right: 22rem;
-  }
-}
-
-
-
-/*
- * Themes
- *
- * As of v1.1, Hyde includes optional themes to color the sidebar and links
- * within blog posts. To use, add the class of your choosing to the `body`.
- */
-
-/* Base16 (http://chriskempson.github.io/base16/#default) */
-
-/* Custom */
-.theme-base-custom .sidebar {
-  background-color: white;
-}
 .theme-base-custom .content a,
 .theme-base-custom .related-posts li a:hover {
-  color: #268bd2;
-  font-weight:600;
+    color: #2563eb;
 }
+
 .theme-base-custom .post-title a {
-  color: #333333;
-}
-
-.tag-cloud {
-  list-style-type: circle;
-  font-weight:900;
-  li {
-    display: inline-block;
-  }
-}
-
-#archives {
-  padding: 5px;
-}
-
-/* works in chrome, not in ff */
-#archives :target:before {
-  content: "";
-  display: block;
-  height: 3rem;
-  margin: -3rem 0 0;
-}
-
-.archive-group {
-  margin: 5px;
-  border-top: 1px solid #ddd;
-  font-size: 14px;
-}
-.archive-item {
-  margin-left: 5px;
-  font-size:1rem;
-}
-.archive-item-title {
-  color: #333333;
-  font-size:1rem;
-}
-.archive-item-content {
-  font-size:0.85rem;
-}
-.post-tags {
-  text-align: right;
-  font-size:16px;
-}
-
-a.post-tags-link:link {color:#9a9a9a}
-a.post-tags-link:active {color:#9a9a9a}
-a.post-tags-link:hover {color:#9a9a9a}
-a.post-tags-link:visited {color:#9a9a9a}
-
-a.post-footer-link:link {color:#9a9a9a}
-a.post-footer-link:active {color:#9a9a9a}
-a.post-footer-link:hover {color:#9a9a9a}
-a.post-footer-link:visited {color:#9a9a9a}
-
-.post-author {
-  color:white;
-  background-color:#9a9a9a;
-  padding-left:5px;
-  padding-right:5px;
-}
-
-.post-footer {
-  text-align:center;
-  font-size:16px;
+    color: #111827;
+    font-weight: 800;
 }

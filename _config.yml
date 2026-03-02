@@ -12,11 +12,11 @@ permalink:        pretty
 
 # Setup
 title:            Engineering blog by Mikołaj Kania
-description:      "<a href='https://pl.linkedin.com/in/mikolajkania' target='_blank'><b>Mikołaj Kania</b></a> <br/> Technical Program Manager, Team Lead, Software Engineer who blogs about machine learning, search engines and software development. Let's stay in touch!"
+description:      "<a href='https://pl.linkedin.com/in/mikolajkania' target='_blank'><b>Mikołaj Kania</b></a> <br/> Technical PM | AI/ML Team Lead | Software Engineer"
 linkedin:		  http://www.linkedin.com/in/mikolajkania/
 twitter:		  https://twitter.com/MikolajKania
 medium:           https://medium.com/@mikolajkania
-url:              mikolajkania.com
+url:              http://mikolajkania.com/
 rss:              http://mikolajkania.com/atom.xml
 
 author:

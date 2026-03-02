@@ -3,77 +3,31 @@
 
 {% include head.html %}
 
-<body>
+<body class="theme-base-custom">
 
-{% include sidebar.html %}
+{% include navbar.html %}
 
-<!-- Wrap is the content to shift when toggling the sidebar. We wrap the
-     content to avoid any CSS collisions with our real content. -->
 <div class="wrap">
-  <div class="masthead">
-    <div class="container">
-      <h3 class="masthead-title">
-        <a href="{{ site.baseurl }}/" title="Home">{{ site.title }}</a>
-        <small>{{ site.tagline }}</small>
-      </h3>
-    </div>
-  </div>
-
   <div class="container content">
     {{ content }}
   </div>
 
-  <!-- Site footer -->
   <footer class="site-footer">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-6">
-          <h6>About</h6>
-          <p class="text-justify">{{ site.description }}</p>
-        </div>
-
-        <div class="col-xs-6 col-md-3">
-          <h6>Quick Links</h6>
-          <ul class="footer-links">
-            <li><a href="{{ site.linkedin }}" target="_blank">Linkedin</a></li>
-            <li><a href="{{ site.twitter }}" target="_blank">Twitter / X</a></li>
-            <li><a href="{{ site.github.repo }}" target="_blank">Github</a></li>
-            <!--<li><a href="{{ site.medium}}" target="_blank">Medium</a></li>-->
-            <li><a href="{{ site.rss }}" target="_blank">RSS</a></li>
-          </ul>
-        </div>
-      </div>
-      <hr>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-sm-6 col-xs-12">
-          <p class="copyright-text">Copyright &copy; 2024 All Rights Reserved</p>
-        </div>
+      <div class="footer-inner">
+        <p class="footer-bio">{{ site.description }}</p>
+        <nav class="footer-nav">
+          <a href="{{ site.baseurl }}/" class="nav-link">Blog</a>
+          <a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="{{ site.twitter }}" target="_blank" rel="noopener">X</a>
+          <a href="{{ site.github.repo }}" target="_blank" rel="noopener">GitHub</a>
+          <a href="{{ site.rss }}" target="_blank" rel="noopener">RSS</a>
+        </nav>
+        <p class="footer-copy">&copy; {{ site.time | date: '%Y' }} Mikołaj Kania. All rights reserved.</p>
       </div>
     </div>
   </footer>
-
 </div>
 
-<label for="sidebar-checkbox" class="sidebar-toggle"></label>
-
-<script>
-  (function(document) {
-    var toggle = document.querySelector('.sidebar-toggle');
-    var sidebar = document.querySelector('#sidebar');
-    var checkbox = document.querySelector('#sidebar-checkbox');
-
-    document.addEventListener('click', function(e) {
-      var target = e.target;
-
-      if(!checkbox.checked ||
-              sidebar.contains(target) ||
-              (target === checkbox || target === toggle)) return;
-
-      checkbox.checked = false;
-    }, false);
-  })(document);
-</script>
 </body>
 </html>

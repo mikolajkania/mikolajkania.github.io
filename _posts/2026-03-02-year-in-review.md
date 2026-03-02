@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 2025 - A year of shipping advanced AI
+title: 2025 - The year of shipping advanced AI
 ---
 
 Satisfying year of working on generative AI products at Wolters Kluwer, this time across three countries and four releases. Each project had its own team, its own challenges, and its own lessons. On top of everything, I enjoyed close cooperation with engineering teams and product teams.
@@ -11,7 +11,7 @@ Satisfying year of working on generative AI products at Wolters Kluwer, this tim
 
 **1. [VitalLaw Expert AI](https://www.wolterskluwer.com/en/solutions/vitallaw-law-firms/ai) — conversational search (USA).** Building on the foundation from the previous year, the product expanded with a conversational AI feature that lets legal professionals query primary law and expert commentary through natural language. A big part of my involvement was building a proper evaluation layer — getting the right datasets and making sure improvements were technically measurable rather than just subjective.
 
-**2. [One Expert AI](https://www.wolterskluwer.com/it-it/solutions/one-ai) — generative AI for professionals (Italy).** One business unit, but in practice something closer to three sometimes overlapping workstreams: legal, tax, and labour — partially similar, but with different data sources and evaluation datasets, optimisations and stakeholders. On top of that, AI UX features were being developed and integrated into the chat interface. A lot of coordination, but also a staying close to the timelines.
+**2. [ONE AI](https://www.wolterskluwer.com/it-it/solutions/one-ai) — generative AI for professionals (Italy).** One business unit, but in practice something closer to three sometimes overlapping workstreams: legal, tax, and labour — partially similar, but with different data sources and evaluation datasets, optimisations and stakeholders. On top of that, AI UX features were being developed and integrated into the chat interface. A lot of coordination, but also a staying close to the timelines.
 
 **3. [LEX Expert AI](https://www.wolterskluwer.com/pl-pl/solutions/lex/expert-ai) — specialised legal AI chat (Poland).** Two beta phases, close cooperation with the business side, and a lot of focus on quality. The interesting problems here were around understanding user intent and getting the balance right between primary sources (legislation, rulings) and secondary ones (expert commentary). Working with a very diverse group engineers from multiple teams, proving commitments comes hand in hand with AI expertise for project success.
 
